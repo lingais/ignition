@@ -1,0 +1,11 @@
+{
+	"cSpell.words": [
+		"transpiling"
+	],
+	"files.exclude": {
+		"LICENSE": true,
+		"node_modules": true,
+		"yarn.lock": true,
+		".boilerplate-config": true
+	}
+}
