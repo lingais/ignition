@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 
-const HttpNotFound: FC = () => (
-	<h2>404: Not Found</h2>
-);
+class HttpNotFound extends React.Component {
+	render() {
+		return (
+			<h2>Not found</h2>
+		);
+	}
+}
 
 export default HttpNotFound;

@@ -1,7 +1,11 @@
 import React, { FC } from 'react';
 
-const Home: FC = () => (
-	<h2>Home</h2>
-);
+class Home extends React.Component {
+	render() {
+		return (
+			<h2>Home</h2>
+		);
+	}
+}
 
 export default Home;

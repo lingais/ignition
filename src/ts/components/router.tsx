@@ -6,18 +6,32 @@ import Home from './pages/Home';
 import Stake from './pages/Stake';
 import Vault from './pages/Vault';
 
-const App: FC = () => (
-	<Router>
-		<Nav />
-		<main>
-			<Switch>
-				<Route exact path="/" component={Home} />
-				<Route path="/stake" component={Stake} />
-				<Route path="/vault" component={Vault} />
-				<Route component={HttpNotFound} />
-			</Switch>
-		</main>
-	</Router>
-);
+//const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+class Routes extends React.Component {
+	constructor(props: any) {
+		super(props);
+		this.state = {
+			wallet: ""
+		};
+	}
 
-export default App;
+	/** function: render {{{ */
+	render() {
+		return (
+			<Router>
+				<Nav />
+				<main>
+					<Switch>
+						<Route exact path="/" component={Home} />
+						<Route path="/stake" component={Stake} />
+						<Route path="/vault" component={Vault} />
+						<Route component={HttpNotFound} />
+					</Switch>
+				</main>
+			</Router>
+		);
+	}
+	/** }}} */
+};
+
+export default Routes;

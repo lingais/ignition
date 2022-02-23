@@ -2,14 +2,17 @@ import React, { FC } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Web3 from 'web3';
 
-const Header: FC = () => {
-	const web3 = new Web3(Web3.givenProvider || "ws://localhost:8545");
+class Header extends React.Component {
+	constructor(props: any) {
+		super(props);
+	}
 
-	return (
+	render() { 
+		return (
 		<header>
 			<nav>
 				<h1>
-					<Link to="/" className="home-link" title="Home">0x574r finance - testnet</Link>
+					<Link to="/" className="home-link" title="Home">Insignis Finance - testnet</Link>
 				</h1>
 				<ul>
 					<li><NavLink to="/stake" className="nav-item" activeClassName="nav-item active">Stake</NavLink></li>
@@ -19,6 +22,7 @@ const Header: FC = () => {
 			</nav>
 		</header>
 	);
+		}
 };
 
 export default Header;
