@@ -1,12 +1,13 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import '../scss/index.scss';
-import 'regenerator-runtime/runtime'
+import 'regenerator-runtime/runtime';
 import Router from './components/router';
 
 (() => {
+
 	const htmlElementName: string = 'app';
-	const jsxElement: JSX.Element = <Router />;
+	const jsxElement: JSX.Element = (<Router />);
 	const htmlElement: HTMLElement | null = document.getElementById(htmlElementName);
 	if (htmlElement) {
 		ReactDom.render(jsxElement, htmlElement);

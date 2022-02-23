@@ -19,6 +19,10 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: auto;
+	#tooltip-2 {
+			display: none !important;
+			background: red;
+		}
 }
 
 main {

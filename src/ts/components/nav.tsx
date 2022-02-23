@@ -1,9 +1,11 @@
 import React, { FC } from 'react';
+import { ConnectWallet } from "@3rdweb/react";
 import { Link, NavLink } from 'react-router-dom';
-import { HARMONY_TESTNET } from '../constant';
-import Web3 from 'web3';
+import { useState } from "react"
 
 class Header extends React.Component<Props, {}> {
+	
+
 	/** constructor {{{ */
 	constructor(props: any) {
 		super(props);
@@ -12,10 +14,6 @@ class Header extends React.Component<Props, {}> {
 
 	/** function: connect_wallet {{{ */
 	private connect_wallet = async (): Promise<void> => {
-		console.log("try connect");
-		console.log("network is:");
-		console.log(await this.props.web3?.eth.getChainId());
-		console.log(await this.props.web3?.eth.getChainId() == HARMONY_TESTNET);
 	};
 	/** }}} */
 
@@ -31,8 +29,7 @@ class Header extends React.Component<Props, {}> {
 					{/* <li><NavLink to="/vault" className="nav-item" activeClassName="nav-item active">Vault</NavLink></li> */}
 					{/* <li><a className="nav-item" href="https://www.google.com" target="_blank">Documentation</a></li> */}
 					{/* <li><a className="nav-item" href="https://dexscreener.com/harmony" target="_blank">Chart</a></li> */}
-					<div className="connect-prompt">
-						<button className="btn btn-info" onClick={this.connect_wallet} type="submit">Connect wallet</button>
+					<div className="connect">
 					</div>
 				</nav>
 			</header>

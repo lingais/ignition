@@ -1,13 +1,33 @@
 import React, { FC } from 'react';
-import Web3 from 'web3';
 
-class Stake extends React.Component<Props, {}> {
+class Stake extends React.Component<Props, State_Stake> {
+	constructor(props: Props) {
+		super(props);
+
+		this.state = {
+			wallet: null
+		};
+	}
+	/** function: get_wallet {{{ */
+	public get_wallet = (): string => {
+		return "";
+	};
+	/** }}} */
+
+	/** function: componentDidMount {{{ */
+	public componentDidMount = (): void => {
+		//this.setState({
+			//wallet: this.get_wallet()
+		//});
+	};
+	/** }}} */
+
 	/** function: render {{{ */
 	render() {
 		return (
 			<div>
 				<h2>Stake</h2>
-				<b>test</b>
+				<b>Wallet:</b>
 			</div>
 		);
 	}

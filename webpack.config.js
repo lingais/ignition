@@ -60,6 +60,11 @@ module.exports = {
 					limit: 10000,
 				},
 			},
+			 {
+          test: /\.mjs$/,
+          include: /node_modules/,
+          type: "javascript/auto"
+        }
 		],
 	},
 	resolve: {
