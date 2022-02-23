@@ -48,4 +48,18 @@ header {
 			}
 		}
 	}
+
+	.connect-prompt {
+		position: fixed;
+		bottom: 0;
+		left: 50%;
+		transform: translate(-50%, 0);
+
+		.btn {
+			color: white;
+			font-weight: bold;
+			border-bottom-left-radius: 0 !important;
+			border-bottom-right-radius: 0 !important;
+		}
+	}
 }

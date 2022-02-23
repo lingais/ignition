@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDom from 'react-dom';
 import '../scss/index.scss';
+import 'regenerator-runtime/runtime'
 import Router from './components/router';
 
 (() => {

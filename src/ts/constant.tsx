@@ -1,0 +1,1 @@
+export const HARMONY_TESTNET: number = 1666700000;

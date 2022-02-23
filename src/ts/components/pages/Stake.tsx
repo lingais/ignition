@@ -1,12 +1,17 @@
 import React, { FC } from 'react';
 import Web3 from 'web3';
 
-class Stake extends React.Component {
+class Stake extends React.Component<Props, {}> {
+	/** function: render {{{ */
 	render() {
 		return (
-			<h2>Stake</h2>
+			<div>
+				<h2>Stake</h2>
+				<b>test</b>
+			</div>
 		);
 	}
+	/** }}} */
 }
 
 export default Stake;
