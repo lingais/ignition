@@ -48,12 +48,12 @@ class Routes extends React.Component<{}, State> {
 	render() {
 		return (
 			<Router>
-				<Nav web3={this.state.web3} wallet={this.state.wallet} />
+				<Nav web3={this.state.web3} wallet={this.state.wallet} network={this.state.network} />
 				<main>
 					<Switch>
-						<Route exact path="/" ><Home web3={this.state.web3} wallet={this.state.wallet} /></Route>
-						<Route path="/stake" ><Stake web3={this.state.web3} wallet={this.state.wallet} /></Route>
-						<Route path="/vault" ><Vault web3={this.state.web3} wallet={this.state.wallet} /></Route>
+						<Route exact path="/" ><Home web3={this.state.web3} wallet={this.state.wallet} network={this.state.network}/></Route>
+						<Route path="/stake" ><Stake web3={this.state.web3} wallet={this.state.wallet} network={this.state.network}/></Route>
+						<Route path="/vault" ><Vault web3={this.state.web3} wallet={this.state.wallet} network={this.state.network}/></Route>
 						<Route><HttpNotFound /></Route>
 					</Switch>
 				</main>

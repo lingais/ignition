@@ -14,6 +14,7 @@ class Header extends React.Component<Props, {}> {
 	private connect_wallet = async (): Promise<void> => {
 		console.log("try connect");
 		console.log("network is:");
+		console.log(await this.props.web3?.eth.getChainId());
 		console.log(await this.props.web3?.eth.getChainId() == HARMONY_TESTNET);
 	};
 	/** }}} */
