@@ -1,17 +1,26 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Web3 from 'web3';
 
 export const slice_web3 = createSlice({
   name: 'slice_web3',
   initialState: {
-    value: new Web3(Web3.givenProvider || "ws://localhost:8545"),
+    web3: new Web3(Web3.givenProvider || "ws://localhost:8545"),
+    wallet: null
   },
   reducers: {
-    update: (state, action) => {
-      state.value = new Web3(action.payload)
+    /** reducer: update_web3 {{{ */
+    update_web3: (state, action) => {
+      state.web3 = new Web3(action.payload);
     },
+    /** }}} */
+    /** reducer: update_wallet {{{ */
+    update_wallet: (state, action) => {
+      state.wallet = action.payload;
+    },
+    /** }}} */
   },
-})
+});
 
-export const { update } = slice_web3.actions
-export default slice_web3.reducer
+export const { update_web3, update_wallet } = slice_web3.actions;
+export type RootState = ReturnType<typeof slice_web3.reducer>;
+export default slice_web3.reducer;

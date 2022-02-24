@@ -5,4 +5,7 @@ export default configureStore({
   reducer: {
     web3: reducer_web3,
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+    serializableCheck: false
+  }),
 })

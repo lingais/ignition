@@ -1,14 +1,17 @@
-import React, { FC } from 'react';
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { useState } from "react";
 import { HARMONY_TESTNET } from '../constant';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from 'web3';
+import { useSelector, useDispatch } from 'react-redux';
+import store from '../redux/store';
+import { update_web3, update_wallet, RootState } from '../redux/slice_web3';
 
 export default function Header() {
 	/** function: connect_wallet_click {{{ */
 	const connect_wallet_click = async (): Promise<void> => {
+		const state = store.getState();
 		const providerOptions = {
 			walletconnect: {
 				package: WalletConnectProvider,
@@ -18,23 +21,52 @@ export default function Header() {
 			}
 		};
 		const web3Modal = new Web3Modal({
-			cacheProvider: true,
+			cacheProvider: false,
 			providerOptions,
 			theme: "dark"
 		});
 
+		web3Modal.clearCachedProvider();
+
 		const provider = await web3Modal.connect();
+
+		store.dispatch(() => update_web3(provider)); // updates web3 state
 	};
 	/** }}} */
 	/** function: connect_wallet_button {{{ */
 	const connect_wallet_button = (): JSX.Element => {
-		// TODO: need to verify if a wallet is connected	
-		if (true) {
+		const wallet = useSelector((state: any) => state.web3.wallet);
+
+		if (wallet) {
 			return (<button className="btn btn-success wallet-connect">Connected</button>);
 		}
 
-		return (<button className="btn btn-warning wallet-connect" onClick={connect_wallet_click}>Connect wallet</button>);
+		else {
+			return (<button className="btn btn-warning wallet-connect" onClick={() => connect_wallet_click()}>Connect wallet</button>);
+		}
 	};
+	/** }}} */
+
+	/** function: listen {{{ */
+	const listen = (): void => {
+		setInterval(async () => {
+			await listen_wallet();
+		}, 500);
+	};
+	/** }}} */
+	/** function: listen_wallet {{{ */
+	const listen_wallet = async (): Promise<void> => {
+		const state = store.getState();
+		const selected = (await state.web3.web3.eth.getAccounts())[0];
+
+		if (state.web3.wallet != selected) store.dispatch(update_wallet(selected));
+	};
+	/** }}} */
+
+	/** function: useEffect {{{ */
+	useEffect(() => {
+		listen();
+	});
 	/** }}} */
 
 	return (
