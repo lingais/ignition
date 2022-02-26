@@ -31,6 +31,7 @@
 		"css-loader": "^3.4.2",
 		"file-loader": "^6.0.0",
 		"html-webpack-plugin": "^4.0.0",
+		"moment": "^2.29.1",
 		"node-sass": "^4.13.1",
 		"react-dapp-web3": "^2.2.5",
 		"react-hot-loader": "^4.12.20",
