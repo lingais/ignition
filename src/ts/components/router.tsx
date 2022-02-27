@@ -107,7 +107,7 @@ export default function Routes() {
 		const state = store.getState();
 		const timer = state.web3.withdraw_timer;
 		const difference = timer - moment().unix();
-		const possible = difference >= 0;
+		const possible = difference < 0;
 
 		store.dispatch(update_withdraw_possible(possible));
 	};
