@@ -32,10 +32,14 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_network {{{ */
 	const listen_network = async (): Promise<void> => {
-		const state = store.getState();
-		const network = (await state.web3.web3.eth.net.getId());
+		try {
+			const state = store.getState();
+			const network = (await state.web3.web3.eth.net.getId());
 
-		if (state.web3.network != network) store.dispatch(update_network(network));
+			if (state.web3.network != network) store.dispatch(update_network(network));
+		} catch (error) {
+			console.error(error);
+		}
 	};
 	/** }}} */
 	/** function: listen_wallet {{{ */

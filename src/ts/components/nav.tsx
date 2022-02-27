@@ -36,13 +36,14 @@ export default function Header() {
 	const connect_wallet_button = (): JSX.Element => {
 		const wallet = useSelector((state: any) => state.web3.wallet);
 
-		if (wallet && is_network_correct()) {
+		if (!is_network_correct()) {
+			return (<button className="btn btn-danger wallet-connect">Wrong network</button>);
+		}
+
+		else if (wallet) {
 			return (<button className="btn btn-success wallet-connect">Connected</button>);
 		}
 
-		else if (!is_network_correct()) {
-			return (<button className="btn btn-danger wallet-connect">Wrong network</button>);
-		}
 
 		else {
 			return (<button className="btn btn-warning wallet-connect" onClick={() => connect_wallet_click()}>Connect wallet</button>);

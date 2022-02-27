@@ -51,7 +51,7 @@
 		"webpack-cli": "^3.3.11",
 		"webpack-dev-server": "^3.10.3"
 	},
-	"homepage": "https://github.com/0xdaine/0x574r-finance",
+	"homepage": "https://github.com/0xdaine/insignis-finance",
 	"keywords": [
 		"boilerplate",
 		"typescript",
@@ -62,11 +62,11 @@
 	],
 	"license": "MIT",
 	"main": "index.js",
-	"name": "0x574r-finance-website",
+	"name": "insignis-finance",
 	"private": false,
 	"repository": {
 		"type": "git",
-		"url": "github:0xdaine/0x574r-finance"
+		"url": "github:0xdaine/insignis-finance"
 	},
 	"scripts": {
 		"build:dev": "cross-env NODE_ENV=development webpack --mode development --color",
