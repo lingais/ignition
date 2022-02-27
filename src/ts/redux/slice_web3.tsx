@@ -12,7 +12,8 @@ export const slice_web3 = createSlice({
     amount_to_stake: 0,
     epoch: 0,
     rebase_timer: moment(),
-    withdraw_timer: moment()
+    withdraw_timer: 0,
+    withdraw_possible: false
   },
   reducers: {
     /** reducer: update_web3 {{{ */
@@ -55,6 +56,11 @@ export const slice_web3 = createSlice({
       state.withdraw_timer = action.payload;
     },
     /** }}} */
+    /** reducer: update_withdraw_possible {{{ */
+    update_withdraw_possible: (state, action) => {
+      state.withdraw_possible = action.payload;
+    },
+    /** }}} */
     /** reducer: update_epoch {{{ */
     update_epoch: (state, action) => {
       state.epoch = action.payload;
@@ -63,6 +69,6 @@ export const slice_web3 = createSlice({
   },
 });
 
-export const { update_epoch, update_web3, update_wallet, update_balance, update_balance_vault, update_rebase_timer, update_amount_to_stake, update_withdraw_timer } = slice_web3.actions;
+export const { update_epoch, update_web3, update_wallet, update_balance, update_balance_vault, update_rebase_timer, update_amount_to_stake, update_withdraw_timer, update_withdraw_possible } = slice_web3.actions;
 export type RootState = ReturnType<typeof slice_web3.reducer>;
 export default slice_web3.reducer;

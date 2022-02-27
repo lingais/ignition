@@ -13,8 +13,9 @@ export default function Vault() {
 	const amount_to_stake = useSelector((state: any) => state.web3.amount_to_stake);
 	const balance = useSelector((state: any) => state.web3.balance);
 	const balance_vault = useSelector((state: any) => state.web3.balance_vault);
+		const is_withdraw_possible = useSelector((state: any) => state.web3.withdraw_possible);
 	const withdraw_timer = useSelector((state: any) => state.web3.withdraw_timer);
-	const wen_withdraw = moment.unix(withdraw_timer).format("MM / DD HH:mm:ss");
+	const wen_withdraw = moment.utc(moment.unix(withdraw_timer)).format("MM / DD HH:mm:ss");
 
 	/** function: stake {{{ */
 	const stake = (): void => {
@@ -33,7 +34,8 @@ export default function Vault() {
 
 	/** function: show_vault_withdraw {{{ */
 	const show_vault_withdraw = (): JSX.Element => {
-		return (<button className="btn btn-md btn-danger" onClick={() => withdraw()}>Withdraw</button>);
+		if (is_withdraw_possible) return (<button className="btn btn-md btn-warning" onClick={() => withdraw()}>Withdraw</button>);
+		else return (<button className="btn btn-md btn-danger">Locked</button>);
 	};
 	/** }}} */
 	/** function: show_vault_stake {{{ */
@@ -75,7 +77,7 @@ export default function Vault() {
 			<br />
 			<b>Staked in vault:</b> {balance_vault}
 			<br />
-			<b>Withdraw possible at:</b> {wen_withdraw}
+			<b>Withdraw possible starting from:</b> {wen_withdraw}
 			<br />
 			{show_vault_withdraw()}
 			<br />

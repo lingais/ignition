@@ -11,7 +11,7 @@ import moment from 'moment';
 import { AbiItem } from 'web3-utils';
 import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT, INSIGNIS_DECIMALS } from '../constant';
 import { Web3ContextProvider } from "react-dapp-web3";
-import { update_wallet, update_balance, update_balance_vault, RootState, update_rebase_timer, update_epoch, update_withdraw_timer } from '../redux/slice_web3';
+import { update_wallet, update_balance, update_balance_vault, RootState, update_rebase_timer, update_epoch, update_withdraw_timer, update_withdraw_possible } from '../redux/slice_web3';
 
 export default function Routes() {
 	/** function: listen {{{ */
@@ -25,6 +25,7 @@ export default function Routes() {
 			await listen_balance_vault();
 			listen_rebase_timer();
 			listen_withdraw_timer();
+			listen_withdraw_possible();
 		}, 1000);
 	};
 	/** }}} */
@@ -99,6 +100,16 @@ export default function Routes() {
 		const duration = moment.duration(rebase.diff(moment()));
 
 		store.dispatch(update_rebase_timer(duration));
+	};
+	/** }}} */
+	/** function: listen_withdraw_possible {{{ */
+	const listen_withdraw_possible = async (): Promise<void> => {
+		const state = store.getState();
+		const timer = state.web3.withdraw_timer;
+		const difference = timer - moment().unix();
+		const possible = difference >= 0;
+
+		store.dispatch(update_withdraw_possible(possible));
 	};
 	/** }}} */
 	/** function: listen_withdraw_timer {{{ */
