@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import moment from 'moment';
 import Web3 from 'web3';
 
 export const slice_web3 = createSlice({
@@ -11,8 +10,8 @@ export const slice_web3 = createSlice({
     balance_vault: 0,
     amount_to_stake: 0,
     epoch: 0,
-    rebase_timer: moment(),
-    withdraw_timer: 0,
+    rebase_timer: '',
+    withdraw_timer: '',
     withdraw_possible: false
   },
   reducers: {

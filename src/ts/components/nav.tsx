@@ -52,10 +52,10 @@ export default function Header() {
 				<h1>
 					<Link to="/" className="home-link" title="Home">Insignis Finance - testnet</Link>
 				</h1>
-				{/* <li><NavLink to="/stake" className="nav-item" activeClassName="nav-item active">Stake</NavLink></li> */}
-				{/* <li><NavLink to="/vault" className="nav-item" activeClassName="nav-item active">Vault</NavLink></li> */}
-				{/* <li><a className="nav-item" href="https://www.google.com" target="_blank">Documentation</a></li> */}
-				{/* <li><a className="nav-item" href="https://dexscreener.com/harmony" target="_blank">Chart</a></li> */}
+				<li><NavLink to="/stake" className="nav-item" activeClassName="nav-item active">Stake</NavLink></li>
+				<li><NavLink to="/vault" className="nav-item" activeClassName="nav-item active">Vault</NavLink></li>
+				<li><a className="nav-item" href="https://www.google.com" target="_blank">Documentation</a></li>
+				<li><a className="nav-item" href="https://dexscreener.com/harmony" target="_blank">Chart</a></li>
 				<div className="connect">
 					{connect_wallet_button()}
 				</div>

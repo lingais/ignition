@@ -1,6 +1,4 @@
 import React, { FC } from 'react';
-import Web3 from 'web3';
-import moment from 'moment';
 import { AbiItem } from 'web3-utils';
 import { useSelector, useDispatch } from 'react-redux';
 import { update_amount_to_stake } from '../../redux/slice_web3';
@@ -13,9 +11,8 @@ export default function Vault() {
 	const amount_to_stake = useSelector((state: any) => state.web3.amount_to_stake);
 	const balance = useSelector((state: any) => state.web3.balance);
 	const balance_vault = useSelector((state: any) => state.web3.balance_vault);
-		const is_withdraw_possible = useSelector((state: any) => state.web3.withdraw_possible);
-	const withdraw_timer = useSelector((state: any) => state.web3.withdraw_timer);
-	const wen_withdraw = moment.utc(moment.unix(withdraw_timer)).format("MM / DD HH:mm:ss");
+	const is_withdraw_possible = useSelector((state: any) => state.web3.withdraw_possible);
+	const wen_withdraw = useSelector((state: any) => state.web3.withdraw_timer);
 
 	/** function: stake {{{ */
 	const stake = (): void => {
@@ -77,7 +74,7 @@ export default function Vault() {
 			<br />
 			<b>Staked in vault:</b> {balance_vault}
 			<br />
-			<b>Withdraw possible starting from:</b> {wen_withdraw}
+			<b>Withdraw possible in:</b> {wen_withdraw}
 			<br />
 			{show_vault_withdraw()}
 			<br />
