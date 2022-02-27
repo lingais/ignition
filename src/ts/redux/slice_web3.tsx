@@ -52,7 +52,7 @@ export const slice_web3 = createSlice({
     /** }}} */
     /** reducer: update_withdraw_timer {{{ */
     update_withdraw_timer: (state, action) => {
-      state.rebase_timer = action.payload;
+      state.withdraw_timer = action.payload;
     },
     /** }}} */
     /** reducer: update_epoch {{{ */

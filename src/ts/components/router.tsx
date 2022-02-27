@@ -105,14 +105,9 @@ export default function Routes() {
 	const listen_withdraw_timer = async (): Promise<void> => {
 		const state = store.getState();
 		const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
-		const timer = moment.utc(moment.unix(await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call()).toDate());
-		const duration = moment.duration(timer.diff(moment()));
-		const remaining = moment.utc(duration.asMilliseconds()).format("MM:DD:HH:mm:ss");
+		const timer = await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call();
 
-		console.log(remaining);
-		console.log(timer.fromNow());
-
-		//store.dispatch(update_withdraw_timer(duration));
+		store.dispatch(update_withdraw_timer(timer));
 	};
 	/** }}} */
 

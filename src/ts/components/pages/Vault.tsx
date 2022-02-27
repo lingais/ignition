@@ -13,7 +13,8 @@ export default function Vault() {
 	const amount_to_stake = useSelector((state: any) => state.web3.amount_to_stake);
 	const balance = useSelector((state: any) => state.web3.balance);
 	const balance_vault = useSelector((state: any) => state.web3.balance_vault);
-	const wen_withdraw = moment.utc(useSelector((state: any) => state.web3.withdraw_timer)).format("DD:HH:mm:ss");
+	const withdraw_timer = useSelector((state: any) => state.web3.withdraw_timer);
+	const wen_withdraw = moment.unix(withdraw_timer).format("MM / DD HH:mm:ss");
 
 	/** function: stake {{{ */
 	const stake = (): void => {
@@ -74,7 +75,7 @@ export default function Vault() {
 			<br />
 			<b>Staked in vault:</b> {balance_vault}
 			<br />
-			<b>Withdraw possible in:</b> {wen_withdraw}
+			<b>Withdraw possible at:</b> {wen_withdraw}
 			<br />
 			{show_vault_withdraw()}
 			<br />
