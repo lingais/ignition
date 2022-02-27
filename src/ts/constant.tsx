@@ -1,7 +1,7 @@
 export const HARMONY_TESTNET: number = 1666700000;
 export const HARMONY_MAINNET: number = 1666600000;
-export const INSIGNIS_CONTRACT: string = "0x93FEE924CE7eea0C6aD50F81c4618eB2C4710214";
-export const INSIGNIS_DECIMALS: number = 12;
+export const INSIGNIS_CONTRACT: string = "0x4f68cb2d0D146cbd1285e7E602ba407EAE325330";
+export const INSIGNIS_DECIMALS: number = 8;
 export const INSIGNIS_ABI = [
 	{
 		"inputs": [

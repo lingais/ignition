@@ -31,10 +31,21 @@ export default function Vault() {
 
 	/** function: show_vault_withdraw {{{ */
 	const show_vault_withdraw = (): JSX.Element => {
-		if (is_withdraw_possible) return (<button className="btn btn-md btn-warning" onClick={() => withdraw()}>Withdraw</button>);
-		else return (<button className="btn btn-md btn-danger">Locked</button>);
+		if (balance_vault > 0) {
+			if (is_withdraw_possible) return (<button className="btn btn-md btn-warning" onClick={() => withdraw()}>Withdraw</button>);
+			else return (<button className="btn btn-md btn-danger">Locked</button>);
+		} else {
+			return (<></>);
+		}
 	};
 	/** }}} */
+	/** function: show_vault_withdraw_timer {{{ */
+	const show_vault_withdraw_timer = (): JSX.Element => {
+		if (!is_withdraw_possible && balance_vault > 0) return (<><b>Withdraw possible in:</b> {wen_withdraw}</>);
+		else return (<></>);
+	};
+	/** }}} */
+
 	/** function: show_vault_stake {{{ */
 	const show_vault_stake = (): JSX.Element => {
 		return (
@@ -74,7 +85,7 @@ export default function Vault() {
 			<br />
 			<b>Staked in vault:</b> {balance_vault}
 			<br />
-			<b>Withdraw possible in:</b> {wen_withdraw}
+			{show_vault_withdraw_timer()}
 			<br />
 			{show_vault_withdraw()}
 			<br />
