@@ -1,10 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Web3 from 'web3';
+import { HARMONY_MAINNET } from '../constant';
 
 export const slice_web3 = createSlice({
   name: 'slice_web3',
   initialState: {
     web3: new Web3(Web3.givenProvider || "ws://localhost:8545"),
+    network: HARMONY_MAINNET,
     wallet: null,
     balance: 0,
     balance_vault: 0,
@@ -18,6 +20,11 @@ export const slice_web3 = createSlice({
     /** reducer: update_web3 {{{ */
     update_web3: (state, action) => {
       state.web3 = new Web3(action.payload);
+    },
+    /** }}} */
+    /** reducer: update_network {{{ */
+    update_network: (state, action) => {
+      state.network = action.payload;
     },
     /** }}} */
     /** reducer: update_wallet {{{ */
@@ -68,6 +75,16 @@ export const slice_web3 = createSlice({
   },
 });
 
-export const { update_epoch, update_web3, update_wallet, update_balance, update_balance_vault, update_rebase_timer, update_amount_to_stake, update_withdraw_timer, update_withdraw_possible } = slice_web3.actions;
+export const { update_epoch,
+  update_web3,
+  update_wallet,
+  update_network,
+  update_balance,
+  update_balance_vault,
+  update_rebase_timer,
+  update_amount_to_stake,
+  update_withdraw_timer,
+  update_withdraw_possible
+} = slice_web3.actions;
 export type RootState = ReturnType<typeof slice_web3.reducer>;
 export default slice_web3.reducer;

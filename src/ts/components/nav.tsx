@@ -2,10 +2,10 @@ import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import Web3 from 'web3';
 import { useSelector, useDispatch } from 'react-redux';
 import store from '../redux/store';
 import { update_web3 } from '../redux/slice_web3';
+import { HARMONY_TESTNET, HARMONY_MAINNET } from '../constant';
 
 export default function Header() {
 	/** function: connect_wallet_click {{{ */
@@ -36,13 +36,26 @@ export default function Header() {
 	const connect_wallet_button = (): JSX.Element => {
 		const wallet = useSelector((state: any) => state.web3.wallet);
 
-		if (wallet) {
+		if (wallet && is_network_correct()) {
 			return (<button className="btn btn-success wallet-connect">Connected</button>);
+		}
+
+		else if (!is_network_correct()) {
+			return (<button className="btn btn-danger wallet-connect">Wrong network</button>);
 		}
 
 		else {
 			return (<button className="btn btn-warning wallet-connect" onClick={() => connect_wallet_click()}>Connect wallet</button>);
 		}
+	};
+	/** }}} */
+
+	/** function: is_network_correct {{{ */
+	const is_network_correct = (): boolean => {
+		const state = store.getState();
+
+		//return state.web3.network === HARMONY_MAINNET;
+		return state.web3.network === HARMONY_TESTNET;
 	};
 	/** }}} */
 
