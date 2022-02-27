@@ -30,6 +30,7 @@
 		"cross-env": "^7.0.2",
 		"css-loader": "^3.4.2",
 		"date-fns": "^2.28.0",
+		"express": "^4.17.3",
 		"file-loader": "^6.0.0",
 		"html-webpack-plugin": "^4.0.0",
 		"moment": "^2.29.1",

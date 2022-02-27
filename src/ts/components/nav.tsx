@@ -35,8 +35,10 @@ export default function Header() {
 	/** function: connect_wallet_button {{{ */
 	const connect_wallet_button = (): JSX.Element => {
 		const wallet = useSelector((state: any) => state.web3.wallet);
+		const network = useSelector((state: any) => state.web3.network);
+		const is_network = network === HARMONY_TESTNET;
 
-		if (!is_network_correct()) {
+		if (!is_network) {
 			return (<button className="btn btn-danger wallet-connect">Wrong network</button>);
 		}
 
@@ -48,15 +50,6 @@ export default function Header() {
 		else {
 			return (<button className="btn btn-warning wallet-connect" onClick={() => connect_wallet_click()}>Connect wallet</button>);
 		}
-	};
-	/** }}} */
-
-	/** function: is_network_correct {{{ */
-	const is_network_correct = (): boolean => {
-		const state = store.getState();
-
-		//return state.web3.network === HARMONY_MAINNET;
-		return state.web3.network === HARMONY_TESTNET;
 	};
 	/** }}} */
 

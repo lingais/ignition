@@ -58,7 +58,7 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_balance {{{ */
 	const listen_balance = async (): Promise<void> => {
-		if (is_network_correct()) {
+		if (is_wallet_correct()) {
 			try {
 				const state = store.getState();
 				let balance = 0;
@@ -82,7 +82,7 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_balance_vault {{{ */
 	const listen_balance_vault = async (): Promise<void> => {
-		if (is_network_correct()) {
+		if (is_wallet_correct()) {
 			try {
 				const state = store.getState();
 				let balance_vault = 0;
@@ -108,7 +108,7 @@ export default function Routes() {
 	/** function: listen_epoch {{{ */
 	const listen_epoch = async (): Promise<void> => {
 		// TODO: smart contract does not have a public getter for epoch index yet
-		if (is_network_correct()) {
+		if (is_wallet_correct()) {
 			try {
 				const state = store.getState();
 				let epoch = 0;
@@ -133,7 +133,7 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_rebase_timer {{{ */
 	const listen_rebase_timer = async (): Promise<void> => {
-		if (is_network_correct()) {
+		if (is_wallet_correct()) {
 			const rebase = startOfDay(addDays(new Date(), 1));
 			const distance = formatDistance(rebase, new Date(), { addSuffix: true });
 
@@ -147,7 +147,7 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_withdraw_possible {{{ */
 	const listen_withdraw_possible = async (): Promise<void> => {
-		if (is_network_correct()) {
+		if (is_wallet_correct()) {
 			const state = store.getState();
 			const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
 			const timer = fromUnixTime(await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call());
@@ -164,7 +164,7 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_withdraw_timer {{{ */
 	const listen_withdraw_timer = async (): Promise<void> => {
-		if (is_network_correct()) {
+		if (is_wallet_correct()) {
 			const state = store.getState();
 			const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
 			const timer = fromUnixTime(await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call());
@@ -185,6 +185,14 @@ export default function Routes() {
 
 		//return state.web3.network === HARMONY_MAINNET;
 		return state.web3.network === HARMONY_TESTNET;
+	};
+	/** }}} */
+	/** function: is_wallet_correct {{{ */
+	const is_wallet_correct = (): boolean => {
+		const state = store.getState();
+
+		if (state.web3.wallet && is_network_correct()) return true;
+		else return false;
 	};
 	/** }}} */
 
