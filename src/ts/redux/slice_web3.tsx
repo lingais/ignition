@@ -9,8 +9,10 @@ export const slice_web3 = createSlice({
     wallet: null,
     balance: 0,
     balance_vault: 0,
+    amount_to_stake: 0,
     epoch: 0,
-    rebase_timer: moment()
+    rebase_timer: moment(),
+    withdraw_timer: moment()
   },
   reducers: {
     /** reducer: update_web3 {{{ */
@@ -33,8 +35,23 @@ export const slice_web3 = createSlice({
       state.balance_vault = action.payload;
     },
     /** }}} */
+    /** reducer: update_amount_to_stake {{{ */
+    update_amount_to_stake: (state, action) => {
+      // prevents chosing an amount higher than the available balance - would return a contract error if bypassed anyway
+      if (action.payload > state.balance) {
+        state.amount_to_stake = state.balance;
+      } else {
+        state.amount_to_stake = action.payload;
+      }
+    },
+    /** }}} */
     /** reducer: update_rebase_timer {{{ */
     update_rebase_timer: (state, action) => {
+      state.rebase_timer = action.payload;
+    },
+    /** }}} */
+    /** reducer: update_withdraw_timer {{{ */
+    update_withdraw_timer: (state, action) => {
       state.rebase_timer = action.payload;
     },
     /** }}} */
@@ -46,6 +63,6 @@ export const slice_web3 = createSlice({
   },
 });
 
-export const { update_epoch, update_web3, update_wallet, update_balance, update_balance_vault, update_rebase_timer } = slice_web3.actions;
+export const { update_epoch, update_web3, update_wallet, update_balance, update_balance_vault, update_rebase_timer, update_amount_to_stake, update_withdraw_timer } = slice_web3.actions;
 export type RootState = ReturnType<typeof slice_web3.reducer>;
 export default slice_web3.reducer;

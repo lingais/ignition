@@ -9,18 +9,22 @@ import store from '../redux/store';
 
 import moment from 'moment';
 import { AbiItem } from 'web3-utils';
-import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT } from '../constant';
+import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT, INSIGNIS_DECIMALS } from '../constant';
 import { Web3ContextProvider } from "react-dapp-web3";
-import { update_wallet, update_balance, update_balance_vault, RootState, update_rebase_timer, update_epoch } from '../redux/slice_web3';
+import { update_wallet, update_balance, update_balance_vault, RootState, update_rebase_timer, update_epoch, update_withdraw_timer } from '../redux/slice_web3';
 
 export default function Routes() {
 	/** function: listen {{{ */
 	const listen = (): void => {
+		listen_rebase_timer();
+
 		setInterval(async () => {
 			await listen_wallet();
 			await listen_epoch();
 			await listen_balance();
+			await listen_balance_vault();
 			listen_rebase_timer();
+			listen_withdraw_timer();
 		}, 1000);
 	};
 	/** }}} */
@@ -40,8 +44,8 @@ export default function Routes() {
 
 			if (state.web3.wallet) {
 				const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
-				balance = await contract.methods.balanceOf(state.web3.wallet).call();
 
+				balance = await contract.methods.balanceOf(state.web3.wallet).call() / Math.pow(10, INSIGNIS_DECIMALS);
 			}
 
 			if (state.web3.balance != balance) store.dispatch(update_balance(balance));
@@ -50,6 +54,26 @@ export default function Routes() {
 		}
 	};
 	/** }}} */
+	/** function: listen_balance_vault {{{ */
+	const listen_balance_vault = async (): Promise<void> => {
+		try {
+			const state = store.getState();
+			let balance_vault = 0;
+
+			if (state.web3.wallet) {
+				const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
+
+				balance_vault = await contract.methods.balanceStakeAmountOf(state.web3.wallet, INSIGNIS_CONTRACT).call();
+			}
+
+			if (state.web3.balance_vault != balance_vault) store.dispatch(update_balance_vault(balance_vault));
+		} catch (error) {
+			console.error("an error occured while probing for wallet's balance - are you using the correct network?");
+			console.error(error);
+		}
+	};
+	/** }}} */
+
 	/** function: listen_epoch {{{ */
 	const listen_epoch = async (): Promise<void> => {
 		try {
@@ -75,6 +99,20 @@ export default function Routes() {
 		const duration = moment.duration(rebase.diff(moment()));
 
 		store.dispatch(update_rebase_timer(duration));
+	};
+	/** }}} */
+	/** function: listen_withdraw_timer {{{ */
+	const listen_withdraw_timer = async (): Promise<void> => {
+		const state = store.getState();
+		const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
+		const timer = moment.utc(moment.unix(await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call()).toDate());
+		const duration = moment.duration(timer.diff(moment()));
+		const remaining = moment.utc(duration.asMilliseconds()).format("MM:DD:HH:mm:ss");
+
+		console.log(remaining);
+		console.log(timer.fromNow());
+
+		//store.dispatch(update_withdraw_timer(duration));
 	};
 	/** }}} */
 

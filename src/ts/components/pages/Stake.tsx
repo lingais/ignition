@@ -17,9 +17,11 @@ export default function Stake() {
 			<br />
 			<b>Balance:</b> {balance}
 			<br />
-			<b>Epoch:</b> {epoch}
-			<br />
 			<b>Balance at next rebase:</b> {balance_next}
+			<br />
+			<b>Daily ROI:</b> 1%
+			<br />
+			<b>Epoch:</b> {epoch}
 			<br />
 			<b>Next rebase in:</b> {rebase_date}  (not on schedule on the testnet)
 		</div>
