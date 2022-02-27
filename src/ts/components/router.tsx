@@ -6,8 +6,8 @@ import Home from './pages/Home';
 import Stake from './pages/Stake';
 import Vault from './pages/Vault';
 import store from '../redux/store';
+import { format, addDays, startOfDay, formatDistance, fromUnixTime, differenceInSeconds } from 'date-fns';
 
-import moment from 'moment';
 import { AbiItem } from 'web3-utils';
 import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT, INSIGNIS_DECIMALS } from '../constant';
 import { Web3ContextProvider } from "react-dapp-web3";
@@ -96,17 +96,18 @@ export default function Routes() {
 	/** }}} */
 	/** function: listen_rebase_timer {{{ */
 	const listen_rebase_timer = async (): Promise<void> => {
-		const rebase = moment().add(1, 'days').startOf('day');
-		const duration = moment.duration(rebase.diff(moment()));
+		const rebase = startOfDay(addDays(new Date(), 1));
+		const distance = formatDistance(rebase, new Date(), {addSuffix: true})
 
-		store.dispatch(update_rebase_timer(duration));
+		store.dispatch(update_rebase_timer(distance));
 	};
 	/** }}} */
 	/** function: listen_withdraw_possible {{{ */
 	const listen_withdraw_possible = async (): Promise<void> => {
 		const state = store.getState();
-		const timer = state.web3.withdraw_timer;
-		const difference = timer - moment().unix();
+		const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
+		const timer = fromUnixTime(await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call());
+		const difference = differenceInSeconds(timer, new Date());
 		const possible = difference < 0;
 
 		store.dispatch(update_withdraw_possible(possible));
@@ -116,9 +117,10 @@ export default function Routes() {
 	const listen_withdraw_timer = async (): Promise<void> => {
 		const state = store.getState();
 		const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
-		const timer = await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call();
+		const timer = fromUnixTime(await contract.methods.balanceStakeExpireOf(state.web3.wallet, INSIGNIS_CONTRACT).call());
+		const distance = formatDistance(timer, new Date(), {addSuffix: true});
 
-		store.dispatch(update_withdraw_timer(timer));
+		store.dispatch(update_withdraw_timer(distance));
 	};
 	/** }}} */
 
