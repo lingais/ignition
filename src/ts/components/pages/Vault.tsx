@@ -11,6 +11,7 @@ export default function Vault() {
 	const amount_to_stake = useSelector((state: any) => state.web3.amount_to_stake);
 	const balance = useSelector((state: any) => state.web3.balance);
 	const balance_vault = useSelector((state: any) => state.web3.balance_vault);
+	const balance_vault_reward = balance_vault * 2.2;
 	const is_withdraw_possible = useSelector((state: any) => state.web3.withdraw_possible);
 	const wen_withdraw = useSelector((state: any) => state.web3.withdraw_timer);
 
@@ -42,6 +43,13 @@ export default function Vault() {
 	/** function: show_vault_withdraw_timer {{{ */
 	const show_vault_withdraw_timer = (): JSX.Element => {
 		if (!is_withdraw_possible && balance_vault > 0) return (<><b>Withdraw possible in:</b> {wen_withdraw}</>);
+		else return (<></>);
+	};
+	/** }}} */
+	/** function: show_vault_withdraw_reward {{{ */
+	const show_vault_withdraw_reward = (): JSX.Element => {
+		const reward = Math.floor(balance_vault * 2.2);
+		if (balance_vault > 0) return (<><b>Estimated reward upon withdrawal:</b> {reward}</>);
 		else return (<></>);
 	};
 	/** }}} */
@@ -84,6 +92,8 @@ export default function Vault() {
 			<b>Daily ROI:</b> 2%
 			<br />
 			<b>Staked in vault:</b> {balance_vault}
+			<br />
+			{show_vault_withdraw_reward()}
 			<br />
 			{show_vault_withdraw_timer()}
 			<br />
