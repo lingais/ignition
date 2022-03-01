@@ -66,7 +66,7 @@ export default function Routes() {
 				if (state.web3.wallet) {
 					const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
 
-					balance = await contract.methods.balanceOf(state.web3.wallet).call() / Math.pow(10, INSIGNIS_DECIMALS);
+					balance = await contract.methods.balanceOf(state.web3.wallet).call();
 				}
 
 				if (state.web3.balance != balance) store.dispatch(update_balance(balance));
@@ -90,7 +90,7 @@ export default function Routes() {
 				if (state.web3.wallet) {
 					const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
 
-					balance_vault = await contract.methods.balanceStakeAmountOf(state.web3.wallet, INSIGNIS_CONTRACT).call();
+					balance_vault = parseFloat(await contract.methods.balanceStakeAmountOf(state.web3.wallet, INSIGNIS_CONTRACT).call());
 				}
 
 				if (state.web3.balance_vault != balance_vault) store.dispatch(update_balance_vault(balance_vault));

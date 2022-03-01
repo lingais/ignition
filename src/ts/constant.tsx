@@ -1,7 +1,7 @@
 export const HARMONY_TESTNET: number = 1666700000;
 export const HARMONY_MAINNET: number = 1666600000;
-export const INSIGNIS_CONTRACT: string = "0xE0C7d8BbDc590cF2359d1Bd0079cAFA69f86f579";
-export const INSIGNIS_DECIMALS: number = 8;
+export const INSIGNIS_CONTRACT: string = "0xFf1cD4FEC11310332FAAa231051d131011d3C9FF";
+export const INSIGNIS_DECIMALS: number = 6;
 export const INSIGNIS_ABI = [
 	{
 		"inputs": [
@@ -221,6 +221,11 @@ export const INSIGNIS_ABI = [
 	},
 	{
 		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			},
 			{
 				"internalType": "address",
 				"name": "contract_addr",
@@ -525,6 +530,31 @@ export const INSIGNIS_ABI = [
 			{
 				"indexed": true,
 				"internalType": "address",
+				"name": "from",
+				"type": "address"
+			},
+			{
+				"indexed": true,
+				"internalType": "address",
+				"name": "contract_addr",
+				"type": "address"
+			},
+			{
+				"indexed": false,
+				"internalType": "uint256",
+				"name": "value",
+				"type": "uint256"
+			}
+		],
+		"name": "ManualStakeWithdrawMint",
+		"type": "event"
+	},
+	{
+		"anonymous": false,
+		"inputs": [
+			{
+				"indexed": true,
+				"internalType": "address",
 				"name": "previousOwner",
 				"type": "address"
 			}
@@ -777,6 +807,19 @@ export const INSIGNIS_ABI = [
 	{
 		"inputs": [],
 		"name": "getCirculatingSupply",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getEpoch",
 		"outputs": [
 			{
 				"internalType": "uint256",

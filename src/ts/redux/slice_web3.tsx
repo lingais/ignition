@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Web3 from 'web3';
 import { HARMONY_MAINNET } from '../constant';
+import { INSIGNIS_DECIMALS } from '../constant';
 
 export const slice_web3 = createSlice({
   name: 'slice_web3',
@@ -11,6 +12,7 @@ export const slice_web3 = createSlice({
     balance: 0,
     balance_vault: 0,
     amount_to_stake: 0,
+    amount_to_withdraw: 0,
     epoch: 0,
     rebase_timer: '',
     withdraw_timer: '',
@@ -34,21 +36,29 @@ export const slice_web3 = createSlice({
     /** }}} */
     /** reducer: update_balance {{{ */
     update_balance: (state, action) => {
-      state.balance = action.payload;
+      state.balance = action.payload / Math.pow(10, INSIGNIS_DECIMALS);
     },
     /** }}} */
     /** reducer: update_balance_vault {{{ */
     update_balance_vault: (state, action) => {
-      state.balance_vault = action.payload;
+      state.balance_vault = action.payload / Math.pow(10, INSIGNIS_DECIMALS);
     },
     /** }}} */
     /** reducer: update_amount_to_stake {{{ */
     update_amount_to_stake: (state, action) => {
-      // prevents chosing an amount higher than the available balance - would return a contract error if bypassed anyway
       if (action.payload > state.balance) {
         state.amount_to_stake = state.balance;
       } else {
         state.amount_to_stake = action.payload;
+      }
+    },
+    /** }}} */
+    /** reducer: update_amount_to_withdraw {{{ */
+    update_amount_to_withdraw: (state, action) => {
+      if (action.payload > state.balance_vault) {
+        state.amount_to_withdraw = state.balance_vault;
+      } else {
+        state.amount_to_withdraw = action.payload;
       }
     },
     /** }}} */
@@ -83,6 +93,7 @@ export const { update_epoch,
   update_balance_vault,
   update_rebase_timer,
   update_amount_to_stake,
+  update_amount_to_withdraw,
   update_withdraw_timer,
   update_withdraw_possible
 } = slice_web3.actions;
