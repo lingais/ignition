@@ -17,7 +17,7 @@ export default function Stake() {
 			<br />
 			<b>Balance at next rebase:</b> {balance_next}
 			<br />
-			<b>Daily ROI:</b> 1%
+			<b>Daily ROI:</b> 2%
 			<br />
 			<b>Epoch:</b> {epoch}
 			<br />
