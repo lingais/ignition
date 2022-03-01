@@ -115,11 +115,10 @@ export default function Routes() {
 
 				if (state.web3.wallet) {
 					const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
-					// TODO: smart contract needs a getEpoch method
-					epoch = await contract.methods.epoch.call();
+					epoch = await contract.methods.getEpoch().call();
 				}
 
-				//if (state.web3.epoch != epoch) store.dispatch(update_epoch(epoch));
+				if (state.web3.epoch != epoch) store.dispatch(update_epoch(epoch));
 			} catch (error) {
 				console.error("an error occured while probing for Insignis's rebase epoch - are you using the correct network?");
 				console.error(error);
