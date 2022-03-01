@@ -6,7 +6,7 @@ export default function Stake() {
 	const epoch = useSelector((state: any) => state.web3.epoch);
 	const balance = useSelector((state: any) => state.web3.balance);
 	const rebase_timer = useSelector((state: any) => state.web3.rebase_timer);
-	const balance_next = balance * 1.01;
+	const balance_next = balance * 1.02;
 
 	return (
 		<div>
