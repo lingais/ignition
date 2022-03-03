@@ -17,7 +17,7 @@ function Front() {
 					animate={{ opacity: 1 }}
 					transition={{ duration: title_duration }}
 				>
-					Harmony's first Titano fork
+					The fastest Titano fork ever.
 				</motion.div>
 			</div>
 			<div className="txt1">
@@ -33,7 +33,7 @@ function Front() {
 					animate={{ x: "1%", opacity: 1 }}
 					transition={{ duration: txt_duration, delay: txt2_delay }}
 				>
-					Easy auto-staking.
+					Autonomous staking.
 				</motion.div>
 				<motion.div className="third"
 					initial={{ x: "-40%", opacity: 0 }}
@@ -44,11 +44,20 @@ function Front() {
 				</motion.div>
 			</div>
 			<div className="buy">
-				<motion.div className="btn btn-xl btn-info"
-					initial={{ x: "140%", opacity: 0 }}
-					animate={{ x: "90%", opacity: 1 }}
+				<motion.div className="d-none d-lg-block d-xl-block"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
 					transition={{ duration: txt_duration, delay: buy_delay }}
-				>Buy INSIG</motion.div>
+				>
+					<button className="btn-buy">buy insig</button>
+					<div className="sub-btn-text">
+						& join our social networks
+					</div>
+					<div className="sub-btn-links">
+						<a href="#" target="_blank"><img src="/img/social/discord.svg"></img></a>
+						<a href="#" target="_blank"><img src="/img/social/twitter.svg"></img></a>
+					</div>
+				</motion.div>
 			</div>
 		</div>
 	);
