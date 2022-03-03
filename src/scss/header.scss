@@ -15,8 +15,10 @@ header {
 	}
 
 	nav {
+		position: absolute;
 		padding: ($page-padding / 2) ($page-padding * 2);
 		margin: 0 auto;
+		min-width: $max-page-width;
 		max-width: $max-page-width;
 		overflow: auto;
 		display: flex;

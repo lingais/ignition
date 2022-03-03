@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { Provider } from 'react-redux';
 import '../scss/index.scss';
+import 'animate.css';
 import 'regenerator-runtime/runtime';
 
 import store from './redux/store';

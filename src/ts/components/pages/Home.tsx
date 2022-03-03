@@ -1,10 +1,65 @@
 import React, { FC } from 'react';
+import { motion } from 'framer-motion';
+
+/** component: front {{{ */
+function Front() {
+	const title_duration = 0.75;
+	const txt_duration = 1.5;
+	const txt2_delay = 1.50;
+	const txt3_delay = txt2_delay * 2;
+	const buy_delay = txt3_delay * 1.5;
+
+	return (
+		<div className="front">
+			<div className="txt2">
+				<motion.div className="title"
+					initial={{ opacity: 0 }}
+					animate={{ opacity: 1 }}
+					transition={{ duration: title_duration }}
+				>
+					Harmony's first Titano fork
+				</motion.div>
+			</div>
+			<div className="txt1">
+				<motion.div className="first"
+					initial={{ x: "-40%", opacity: 0 }}
+					animate={{ x: "1%", opacity: 1 }}
+					transition={{ duration: txt_duration }}
+				>
+					Lightspeed transactions.
+				</motion.div>
+				<motion.div className="second"
+					initial={{ x: "-40%", opacity: 0 }}
+					animate={{ x: "1%", opacity: 1 }}
+					transition={{ duration: txt_duration, delay: txt2_delay }}
+				>
+					Easy auto-staking.
+				</motion.div>
+				<motion.div className="third"
+					initial={{ x: "-40%", opacity: 0 }}
+					animate={{ x: "1%", opacity: 1 }}
+					transition={{ duration: txt_duration, delay: txt3_delay }}
+				>
+					15123123% annual income.
+				</motion.div>
+			</div>
+			<div className="buy">
+				<motion.div className="btn btn-xl btn-info"
+					initial={{ x: "140%", opacity: 0 }}
+					animate={{ x: "90%", opacity: 1 }}
+					transition={{ duration: txt_duration, delay: buy_delay }}
+				>Buy INSIG</motion.div>
+			</div>
+		</div>
+	);
+};
+/** }}} */
 
 export default function Home() {
+
 	return (
-		<div>
-			<h2>Home</h2>
-			<br />
+		<div className="home">
+			<Front />
 		</div>
 	);
 }

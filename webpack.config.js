@@ -53,6 +53,10 @@ module.exports = {
 				test: /\.scss$/,
 				loader: 'style-loader!css-loader!sass-loader',
 			},
+	{
+				test: /\.css$/,
+				loader: 'css-loader',
+			},
 			{
 				test: /\.(jpe?g|png|gif|svg)$/i,
 				loader: 'url-loader',

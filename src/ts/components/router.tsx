@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Nav from './nav';
 import HttpNotFound from './pages/404';
 import Home from './pages/Home';
@@ -144,11 +145,13 @@ export default function Routes() {
 			<Web3ContextProvider>
 				<Nav />
 				<main>
-					<Switch>
-						<Route exact path="/" ><Home /></Route>
-						<Route path="/stake" ><Stake /></Route>
-						<Route><HttpNotFound /></Route>
-					</Switch>
+					<AnimatePresence>
+						<Switch>
+							<Route exact path="/" ><Home /></Route>
+							<Route path="/stake" ><Stake /></Route>
+							<Route><HttpNotFound /></Route>
+						</Switch>
+					</AnimatePresence>
 				</main>
 			</Web3ContextProvider>
 		</Router>

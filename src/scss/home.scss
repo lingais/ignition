@@ -1,0 +1,55 @@
+.home {
+  /// component: front {{{
+  .front {
+    height: 100vh;
+    background: linear-gradient(-95deg, #08060f, #0a1d35, #030b16, #22285e);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+
+    // keyframes: gradient {{{
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+    /// }}}
+
+    /// class: txt1 {{{
+    .txt1 {
+      position: absolute;
+      top: 60%;
+      transform: translate(0, -60%);
+      left: 5%;
+      font-size: 50px;
+      color: white;
+      font-weight: bold;
+    }
+    /// }}}
+    /// class: txt2 {{{
+    .txt2 {
+      position: absolute;
+      font-size: 32px;
+      color: white;
+      width: 100vw;
+      text-align: center;
+      font-weight: bold;
+      top: 120px;
+    }
+    /// }}}
+    /// class: buy {{{
+    .buy {
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translate(0, -50%);
+    }
+    /// }}}
+  }
+  /// }}}
+}
