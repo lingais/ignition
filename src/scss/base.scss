@@ -20,6 +20,9 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: auto;
+	max-width: 100vw;
+	overflow-x: hidden;
+	color: white;
 	#tooltip-2 {
 			display: none !important;
 			background: red;

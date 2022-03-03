@@ -5,8 +5,8 @@ import { motion } from 'framer-motion';
 function Front() {
 	const title_duration = 0.75;
 	const txt_duration = 1.5;
-	const txt2_delay = 1.50;
-	const txt3_delay = txt2_delay * 2;
+	const txt2_delay = 1.0;
+	const txt3_delay = txt2_delay * 1.5;
 	const buy_delay = txt3_delay * 1.5;
 
 	return (
@@ -63,12 +63,99 @@ function Front() {
 	);
 };
 /** }}} */
+/** component: Explain {{{ */
+function Explain() {
+	const duration = 0.75;
+
+	return (
+		<div className="explain">
+			<div className="container-fluid">
+				<div className="row">
+					<div className="col-12 col-md-8">
+						<div className="detail">
+							<motion.div className="title"
+								initial={{ x: "-40%", opacity: 0 }}
+								whileInView={{ x: "1%", opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: duration }}
+							>
+								how insignis work
+							</motion.div>
+							<motion.div className="content"
+								initial={{ x: "-40%", opacity: 0 }}
+								whileInView={{ x: "1%", opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: duration }}
+							>
+								Insignis is the first Titano fork on the Harmony blockchain. It is a rebase cryptocurrency which automatically grows by holding it alone.
+								<br />
+								<br />
+								Holders actually holds a share of Insignis's total supply. On each rebase, the total supply grows, thus increasing holders owned value.
+							</motion.div>
+						</div>
+					</div>
+					<div className="col-12 col-md-4">
+						<div className="image">
+							image
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+/** }}} */
+/** component: Backed {{{ */
+function Backed() {
+	const duration = 0.75;
+
+	return (
+		<div className="backed">
+			<div className="container-fluid">
+				<div className="row">
+					<div className="col-12 col-md-4">
+						<div className="image">
+							image
+						</div>
+					</div>
+
+					<div className="col-12 col-md-8">
+						<div className="detail">
+							<motion.div className="title"
+								initial={{ x: "-40%", opacity: 0 }}
+								whileInView={{ x: "1%", opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: duration }}
+							>
+								properly backed rewards
+							</motion.div>
+							<motion.div className="content"
+								initial={{ x: "-40%", opacity: 0 }}
+								whileInView={{ x: "1%", opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: duration }}
+							>
+								Test
+								<br />
+								<br />
+								Test
+							</motion.div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+}
+/** }}} */
 
 export default function Home() {
 
 	return (
 		<div className="home">
 			<Front />
+			<Explain />
+			<Backed />
 		</div>
 	);
 }
