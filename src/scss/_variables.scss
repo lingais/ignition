@@ -1,4 +1,16 @@
-.home {
-  /// component: front {{{
-  /// }}}
-}
+/// buttons {{{
+$button-dexscreener-background: linear-gradient(65deg, #272996, #2d0096);
+$button-cmc-background: linear-gradient(65deg, #2974ff, #004f8f);
+$button-coingecko-background: linear-gradient(65deg, #40ca3c, #027e32);
+
+$button-stats-width: 220px;
+/// }}}
+/// backgrounds {{{
+$background-front: linear-gradient(-45deg, #08060f, #0a1d35, #030b16, #22285e);
+$background-explain: #0a1d35;
+$background-backed: #22285e;
+$background-stats: #0a1d35;
+$background-roadmap: #0d758f;
+$background-howtobuy: #0b586b;
+$background-about: #071625;
+/// }}}

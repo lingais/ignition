@@ -2,7 +2,7 @@
   /// component: front {{{
   .front {
     height: 100vh;
-    background: linear-gradient(-45deg, #08060f, #0a1d35, #030b16, #22285e);
+    background: $background-front;
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 
@@ -77,7 +77,7 @@
   /// component: explain {{{
   .explain {
     height: 780px;
-    background: #0a1d35;
+    background: $background-explain;
 
     .detail {
       padding: 200px 140px;
@@ -87,7 +87,7 @@
   /// component: backed {{{
   .backed {
     height: 780px;
-    background: #22285e;
+    background: $background-backed;
 
     .detail {
       padding: 150px 140px;
@@ -97,7 +97,7 @@
   /// component: stats {{{
   .stats {
     height: 780px;
-    background: #0a1d35;
+    background: $background-stats;
 
     // class: title {{{
     .title {
@@ -142,7 +142,7 @@
   /// component: roadmap {{{
   .roadmap {
     height: 780px;
-    background: #0d758f;
+    background: $background-roadmap;
 
     // class: title {{{
     .title {
@@ -159,7 +159,7 @@
   /// component: howtobuy {{{
   .howtobuy {
     height: 780px;
-    background: #0a1d35;
+    background: $background-howtobuy;
 
     // class: title {{{
     .title {
@@ -171,6 +171,12 @@
       text-align: center;
     }
     /// }}}
+  }
+  /// }}}
+  /// component: about {{{
+  .about {
+    height: 780px;
+    background: #071625;
   }
   /// }}}
 
@@ -191,7 +197,7 @@
   /// }}}
   /// class: image {{{
   .image {
-    padding: 30px 40px;
+    padding: 90px 40px;
   }
   /// }}}
 }
@@ -209,30 +215,14 @@
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
 
-.btn-charts {
-  padding: 20px 40px;
-  margin: 0 10px;
-  font-size: 18px;
-  color: white;
-  border: 0;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 12px;
-  background: linear-gradient(65deg, #272996, #2d0096);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+.btn-dexscreener {
+  @include btn-stats($button-dexscreener-background);
 }
 
 .btn-cmc {
-  padding: 20px 40px;
-  margin: 0 10px;
-  font-size: 18px;
-  color: white;
-  border: 0;
-  font-weight: bold;
-  text-transform: uppercase;
-  border-radius: 12px;
-  background: linear-gradient(65deg, #2974ff, #004f8f);
-  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  @include btn-stats($button-cmc-background);
+}
+
+.btn-coingecko {
+  @include btn-stats($button-coingecko-background);
 }

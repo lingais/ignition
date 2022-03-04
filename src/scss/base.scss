@@ -1,6 +1,7 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import './partials';
 @import './_variables';
+@import './_mixins';
 
 html {
 	font-size: $base-font-size;

@@ -71,7 +71,7 @@ function Explain() {
 		<div className="explain">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 col-md-8">
+					<div className="col-12 col-md-7">
 						<div className="detail">
 							<motion.div className="title"
 								initial={{ x: "-40%", opacity: 0 }}
@@ -94,9 +94,14 @@ function Explain() {
 							</motion.div>
 						</div>
 					</div>
-					<div className="col-12 col-md-4">
+					<div className="col-12 col-md-5">
 						<div className="image">
-							image
+							<motion.img src="./img/infographic-explain.png" alt=""
+								initial={{ x: "100%", opacity: 0 }}
+								whileInView={{ x: "1%", opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: duration }}
+							></motion.img>
 						</div>
 					</div>
 				</div>
@@ -195,8 +200,9 @@ function Stats() {
 							</div>
 							<div className="block-links col-md-4">
 								<div className="numbers">
-									<a href="#" target="_blank"><button className="btn-charts">dexscreener</button></a>
+									<a href="#" target="_blank"><button className="btn-dexscreener">dexscreener</button></a>
 									<button className="btn-cmc" disabled>coinmarketcap</button>
+									<button className="btn-coingecko" disabled>coingecko</button>
 								</div>
 							</div>
 							<div className="col-md-2"></div>
@@ -293,7 +299,20 @@ function Howtobuy() {
 	);
 }
 /** }}} */
+/** component: About {{{ */
+function About() {
+	const duration = 0.50;
 
+	return (
+		<div className="about">
+			<div className="container-fluid">
+				<div className="row">
+				</div>
+			</div>
+		</div>
+	);
+}
+/** }}} */
 
 export default function Home() {
 
@@ -303,8 +322,8 @@ export default function Home() {
 			<Explain />
 			<Backed />
 			<Stats />
-			<Roadmap />
 			<Howtobuy />
+			<About />
 		</div>
 	);
 }

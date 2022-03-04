@@ -1,0 +1,15 @@
+@mixin btn-stats($background) {
+  background: $background;
+  padding: 20px 0;
+  min-width: $button-stats-width;
+  max-width: $button-stats-width;
+  margin: 10px 10px;
+  font-size: 18px;
+  color: white;
+  border: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
