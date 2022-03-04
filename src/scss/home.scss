@@ -46,21 +46,8 @@
     .buy {
       position: absolute;
       top: 65%;
-      right: 7.5%;
       transform: translate(0, -65%);
-
-      .btn-buy {
-        padding: 30px 70px;
-        font-size: 42px;
-        color: white;
-        border: 0;
-        font-weight: bold;
-        text-transform: uppercase;
-        border-radius: 12px;
-        background: linear-gradient(65deg, #ec2214, #960000);
-        box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
-          rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
-      }
+      right: 7.5%;
 
       .sub-btn-text {
         margin-top: 5px;
@@ -91,17 +78,105 @@
   .explain {
     height: 780px;
     background: #0a1d35;
+
+    .detail {
+      padding: 200px 140px;
+    }
   }
   /// }}}
   /// component: backed {{{
   .backed {
     height: 780px;
     background: #22285e;
+
+    .detail {
+      padding: 150px 140px;
+    }
   }
   /// }}}
+  /// component: stats {{{
+  .stats {
+    height: 780px;
+    background: #0a1d35;
+
+    // class: title {{{
+    .title {
+      text-align: center;
+    }
+    /// }}}
+    // class: block-stats {{{
+    .block-stats {
+      border-radius: 10px;
+      padding: 30px 40px 30px 60px;
+      background: rgb(35, 70, 116);
+    }
+    /// }}}
+    // class: block-links {{{
+    .block-links {
+      padding: 30px 40px 30px 90px;
+    }
+    /// }}}
+    // class: numbers {{{
+    .numbers {
+      width: 100%;
+    }
+    /// }}}
+    // class: intit {{{
+    .intit {
+      margin: 10px 0;
+      width: 100%;
+      font-size: 64px;
+      font-weight: bold;
+      text-align: left;
+    }
+    /// }}}
+    /// class: intit-sub {{{
+    .intit-sub {
+      width: 100%;
+      font-weight: bold;
+      text-align: left;
+    }
+    /// }}}
+  }
+  /// }}}
+  /// component: roadmap {{{
+  .roadmap {
+    height: 780px;
+    background: #0d758f;
+
+    // class: title {{{
+    .title {
+      text-align: center;
+    }
+    /// }}}
+    // class: roadmap-img {{{
+    .roadmap-img {
+      text-align: center;
+    }
+    /// }}}
+  }
+  /// }}}
+  /// component: howtobuy {{{
+  .howtobuy {
+    height: 780px;
+    background: #0a1d35;
+
+    // class: title {{{
+    .title {
+      text-align: center;
+    }
+    /// }}}
+    // class: howtobuy-img {{{
+    .howtobuy-img {
+      text-align: center;
+    }
+    /// }}}
+  }
+  /// }}}
+
   /// class: detail {{{
   .detail {
-    padding: 130px 140px;
+    padding: 50px 140px;
 
     .title {
       font-size: 76px;
@@ -119,4 +194,45 @@
     padding: 30px 40px;
   }
   /// }}}
+}
+
+.btn-buy {
+  padding: 30px 70px;
+  font-size: 42px;
+  color: white;
+  border: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px;
+  background: linear-gradient(65deg, #ec2214, #960000);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.btn-charts {
+  padding: 20px 40px;
+  margin: 0 10px;
+  font-size: 18px;
+  color: white;
+  border: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px;
+  background: linear-gradient(65deg, #272996, #2d0096);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+}
+
+.btn-cmc {
+  padding: 20px 40px;
+  margin: 0 10px;
+  font-size: 18px;
+  color: white;
+  border: 0;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px;
+  background: linear-gradient(65deg, #2974ff, #004f8f);
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
+    rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }

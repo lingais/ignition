@@ -56,9 +56,9 @@ export default function Header() {
 	return (
 		<header>
 			<nav>
-				<h1>
-					<Link to="/" className="home-link" title="Home">Insignis Finance</Link>
-				</h1>
+				<div className="banner">
+					<Link to="/" className="home-link" title="Home"><img src="./img/banner.png" /></Link>
+				</div>
 				<ul>
 					<li><NavLink to="/stake" className="nav-item" activeClassName="nav-item active">Wallet</NavLink></li>
 					<li><a className="nav-item" href="https://www.google.com" target="_blank">Documentation</a></li>
