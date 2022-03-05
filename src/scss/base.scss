@@ -1,10 +1,13 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
-@import './partials';
-@import './_variables';
-@import './_mixins';
+@import "./partials";
+@import "./_variables";
+@import "./_mixins";
+
+@font-face {
+}
 
 html {
-	font-size: $base-font-size;
+	font-size: $font;
 	box-sizing: border-box;
 	color: $theme-black;
 	background: $theme-white;
@@ -13,11 +16,13 @@ html {
 *,
 *::before,
 *::after {
+	font-size: $font;
 	box-sizing: inherit;
 }
 
 html,
 body {
+	font-size: $font;
 	margin: 0;
 	padding: 0;
 	overflow: auto;
@@ -25,9 +30,9 @@ body {
 	overflow-x: hidden;
 	color: white;
 	#tooltip-2 {
-			display: none !important;
-			background: red;
-		}
+		display: none !important;
+		background: red;
+	}
 }
 
 main {

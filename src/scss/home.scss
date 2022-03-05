@@ -158,7 +158,7 @@
   /// }}}
   /// component: howtobuy {{{
   .howtobuy {
-    height: 780px;
+    min-height: 780px;
     background: $background-howtobuy;
 
     // class: title {{{
@@ -169,6 +169,20 @@
     // class: howtobuy-img {{{
     .howtobuy-img {
       text-align: center;
+    }
+    /// }}}
+    // class: howtobuy-contract {{{
+    .howtobuy-contract {
+      top: 50px;
+      margin-top: 50px;
+      text-align: center;
+      font-size: 64px;
+      font-weight: bold;
+
+      .address {
+        position: relative;
+        top: 15px;
+      }
     }
     /// }}}
   }
@@ -216,6 +230,10 @@
 }
 
 .btn-dexscreener {
+  @include btn-stats($button-dexscreener-background);
+}
+
+.btn-copy {
   @include btn-stats($button-dexscreener-background);
 }
 

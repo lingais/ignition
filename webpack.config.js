@@ -45,6 +45,10 @@ module.exports = {
 				loader: 'babel-loader',
 			},
 			{
+				test: /\.ttf?$/,
+				loader: 'ttf-loader',
+			},
+			{
 				enforce: 'pre',
 				test: /\.js$/,
 				loader: 'source-map-loader',

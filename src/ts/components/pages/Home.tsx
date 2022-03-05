@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
+import {CopyToClipboard} from 'react-copy-to-clipboard';
 
 /** component: front {{{ */
 function Front() {
@@ -120,7 +121,12 @@ function Backed() {
 				<div className="row">
 					<div className="col-12 col-md-4">
 						<div className="image">
-							image
+							<motion.img src="./img/infographic-backed.png" alt=""
+								initial={{ x: "-40%", opacity: 0 }}
+								whileInView={{ x: "1%", opacity: 1 }}
+								viewport={{ once: true }}
+								transition={{ duration: duration }}
+							></motion.img>
 						</div>
 					</div>
 
@@ -255,6 +261,7 @@ function Roadmap() {
 /** component: Howtobuy {{{ */
 function Howtobuy() {
 	const duration = 0.75;
+	const contract = "0x0000000000";
 
 	return (
 		<div className="howtobuy">
@@ -274,23 +281,30 @@ function Howtobuy() {
 					</div>
 					<div className="col-12 col-md-12">
 						<div className="row">
-							<motion.div className="col-6 howtobuy-img"
-								initial={{ x: "-40%", opacity: 0 }}
-								whileInView={{ x: "0", opacity: 1 }}
-								viewport={{ once: true }}
-								transition={{ duration: duration }}
-							>
-								image
-							</motion.div>
+							<div className="col-6 howtobuy-img">
+								<motion.img src="./img/infographic-howtobuy1.png" alt=""
+									initial={{ x: "-40%", opacity: 0 }}
+									whileInView={{ x: "1%", opacity: 1 }}
+									viewport={{ once: true }}
+									transition={{ duration: duration }}
+								></motion.img>
+							</div>
 
-							<motion.div className="col-6 howtobuy-img"
-								initial={{ x: "100%", opacity: 0 }}
-								whileInView={{ x: "0", opacity: 1 }}
-								viewport={{ once: true }}
-								transition={{ duration: duration }}
-							>
-								image
-							</motion.div>
+							<div className="col-6 howtobuy-img">
+								<motion.img src="./img/infographic-howtobuy2.png" alt=""
+									initial={{ x: "100%", opacity: 0 }}
+									whileInView={{ x: "1%", opacity: 1 }}
+									viewport={{ once: true }}
+									transition={{ duration: duration }}
+								></motion.img>
+							</div>
+						</div>
+
+						<div className="row">
+							<div className="col-12 howtobuy-contract">
+								<span className="address">{ contract }</span>
+								<CopyToClipboard text={contract}><button className="btn-copy">Copy address</button></CopyToClipboard>
+							</div>
 						</div>
 					</div>
 				</div>
