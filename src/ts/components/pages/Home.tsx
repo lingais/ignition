@@ -77,7 +77,7 @@ function Explain() {
 					<div className="col-12 col-md-7">
 						<div className="detail">
 							<motion.div className="title"
-								initial={{ x: "-40%", opacity: 0 }}
+								initial={{ x: "-20%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
@@ -85,7 +85,7 @@ function Explain() {
 								how insignis work
 							</motion.div>
 							<motion.div className="content"
-								initial={{ x: "-40%", opacity: 0 }}
+								initial={{ x: "-20%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
@@ -124,7 +124,7 @@ function Backed() {
 					<div className="col-12 col-md-4">
 						<div className="image">
 							<motion.img src="./img/infographic-backed.png" alt=""
-								initial={{ x: "-40%", opacity: 0 }}
+								initial={{ x: "-20%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
@@ -285,7 +285,7 @@ function Howtobuy() {
 						<div className="row">
 							<div className="col-6 howtobuy-img">
 								<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
-									initial={{ x: "-40%", opacity: 0 }}
+									initial={{ x: "-20%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
 									viewport={{ once: true }}
 									transition={{ duration: duration }}
@@ -293,18 +293,12 @@ function Howtobuy() {
 							</div>
 
 							<div className="col-6 howtobuy-img">
-								<CopyToClipboard text={contract}><motion.img src="./img/infographic-howtobuy2.png" alt=""
+								<CopyToClipboard text={contract}><motion.img className="clickable" src="./img/infographic-howtobuy2.png" alt=""
 									initial={{ x: "100%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
 									viewport={{ once: true }}
 									transition={{ duration: duration }}
 								></motion.img></CopyToClipboard>
-							</div>
-						</div>
-
-						<div className="row">
-							<div className="col-12 howtobuy-contract">
-								<span className="address">ADDRESS: {contract}</span>
 							</div>
 						</div>
 					</div>
@@ -322,8 +316,10 @@ function About() {
 		<div className="about">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 col-md-6 center">
+					<div className="col-12 col-md-6 banner">
 						<img src="./img/banner.png" alt="banner" />
+						<br />
+						<div className="coin"><img src="./img/logo_coin_small.png" alt="coin" /> INSIG</div>
 					</div>
 					<div className="col-12 col-md-6">
 						<div className="row">
@@ -335,7 +331,7 @@ function About() {
 								</ol>
 							</div>
 							<div className="col-4">
-								<div className="title">Join the community</div>
+								<div className="title">Our community</div>
 								<ol>
 									<a href="#" target="_blank"><li className="about-link">Discord</li></a>
 									<a href="#" target="_blank"><li className="about-link">Twitter</li></a>
@@ -345,6 +341,7 @@ function About() {
 								<div className="title">Links</div>
 								<ol>
 									<a href="#" target="_blank"><li className="about-link">Whitepaper</li></a>
+									<a href="https://www.harmony.one" target="_blank"><li className="about-link">Contract</li></a>
 									<a href="https://www.harmony.one" target="_blank"><li className="about-link">Harmony</li></a>
 									<a href="https://viperswap.one" target="_blank"><li className="about-link">ViperSwap</li></a>
 								</ol>

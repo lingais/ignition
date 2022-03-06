@@ -189,11 +189,20 @@
   /// }}}
   /// component: about {{{
   .about {
-    height: 780px;
+    min-height: 780px;
     background: #071625;
 
-    .center {
+    .banner {
       text-align: center;
+    }
+
+    .coin {
+      margin-top: 40px;
+
+      img {
+        position: relative;
+        bottom: 1px;
+      }
     }
 
     .container-fluid {
@@ -278,4 +287,10 @@
 
 .btn-coingecko {
   @include btn-stats($button-coingecko-background);
+}
+
+.clickable {
+  &:hover {
+    cursor: pointer;
+  }
 }
