@@ -22,19 +22,16 @@
 
     /// class: txt1 {{{
     .txt1 {
-      position: absolute;
-      top: 60%;
-      transform: translate(0, -60%);
-      left: 5%;
       font-size: 50px;
       color: white;
       font-weight: bold;
+      margin-bottom: 100px;
     }
     /// }}}
     /// class: txt2 {{{
     .txt2 {
-      position: absolute;
-      font-size: 56px;
+      padding-top: 150px;
+      margin-bottom: 250px;
       color: white;
       width: 100vw;
       text-align: center;
@@ -44,11 +41,8 @@
     /// }}}
     /// class: buy {{{
     .buy {
-      position: absolute;
-      top: 65%;
-      transform: translate(0, -65%);
-      right: 7.5%;
-
+      margin-bottom: 50px;
+      text-align: center;
       .sub-btn-text {
         margin-top: 5px;
         color: rgb(211, 211, 211);
@@ -72,31 +66,40 @@
       }
     }
     /// }}}
+
+    .big {
+      font-size: 40px;
+    }
+
+    .small {
+      font-size: 30px;
+    }
   }
   /// }}}
   /// component: explain {{{
   .explain {
-    min-height: 780px;
     background: $background-explain;
+    padding: 60px 0;
+    padding: $block-padding;
 
     .detail {
-      padding: 200px 140px;
+      padding: $block-detail-padding;
     }
   }
   /// }}}
   /// component: backed {{{
   .backed {
-    min-height: 780px;
     background: $background-backed;
+    padding: $block-padding;
 
     .detail {
-      padding: 150px 140px;
+      padding: $block-detail-padding;
     }
   }
   /// }}}
   /// component: stats {{{
   .stats {
-    min-height: 780px;
+    padding: $block-padding;
     background: $background-stats;
 
     // class: title {{{
@@ -106,6 +109,8 @@
     /// }}}
     // class: block-stats {{{
     .block-stats {
+      max-width: 60%;
+      margin: 0 auto;
       border-radius: 10px;
       padding: 30px 40px 30px 60px;
       background: rgb(35, 70, 116);
@@ -125,9 +130,16 @@
     .intit {
       margin: 10px 0;
       width: 100%;
-      font-size: 64px;
       font-weight: bold;
       text-align: left;
+
+      .big {
+        font-size: 42px;
+      }
+
+      .small {
+        font-size: 28px;
+      }
     }
     /// }}}
     /// class: intit-sub {{{
@@ -158,7 +170,7 @@
   /// }}}
   /// component: howtobuy {{{
   .howtobuy {
-    min-height: 780px;
+    padding: $block-padding;
     background: $background-howtobuy;
 
     // class: title {{{
@@ -207,6 +219,12 @@
       }
     }
 
+    .address {
+      margin-top: 40px;
+      color: #a8a8a8;
+      font-size: 10px;
+    }
+
     .container-fluid {
       padding-top: 80px;
     }
@@ -242,11 +260,12 @@
 
   /// class: detail {{{
   .detail {
-    padding: 50px 140px;
+    padding: 0;
 
     .title {
       font-weight: bold;
       text-transform: uppercase;
+      margin-bottom: 10px;
 
       .big {
         font-size: 76px;
@@ -268,13 +287,15 @@
   /// }}}
   /// class: image {{{
   .image {
-    padding: 90px 40px;
+    text-align: center;
+    padding: 10px 40px;
   }
   /// }}}
 }
 
 .btn-buy {
-  padding: 30px 70px;
+  padding: 30px 0;
+  min-width: 350px;
   font-size: 42px;
   color: white;
   border: 0;

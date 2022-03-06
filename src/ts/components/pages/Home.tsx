@@ -3,14 +3,20 @@ import { motion } from 'framer-motion';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import * as Scroll from 'react-scroll';
 import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
+import { INSIGNIS_CONTRACT } from '../../constant';
 
-/** component: front {{{ */
+/** component: Front {{{ */
 function Front() {
 	const title_duration = 0.75;
 	const txt_duration = 1.5;
 	const txt2_delay = 1.0;
 	const txt3_delay = txt2_delay * 1.5;
 	const buy_delay = txt3_delay * 1.5;
+
+	const content_title = "The fastest Titano fork ever.";
+	const content1 = "First Titano fork on Harmony.";
+	const content2 = "Automatic staking & compounding.";
+	const content3 = "1% daily passive income.";
 
 	return (
 		<div className="front">
@@ -20,47 +26,53 @@ function Front() {
 					animate={{ opacity: 1 }}
 					transition={{ duration: title_duration }}
 				>
-					The fastest Titano fork ever.
+					<span className="d-none d-xl-block big">{content_title}</span>
+					<span className="d-block d-xl-none small">{content_title}</span>
 				</motion.div>
 			</div>
-			<div className="txt1">
-				<motion.div className="first"
-					initial={{ x: "-80%", opacity: 0 }}
-					animate={{ x: "1%", opacity: 1 }}
-					transition={{ duration: txt_duration }}
-				>
-					First Titano fork on Harmony.
-				</motion.div>
-				<motion.div className="second"
-					initial={{ x: "-80%", opacity: 0 }}
-					animate={{ x: "1%", opacity: 1 }}
-					transition={{ duration: txt_duration, delay: txt2_delay }}
-				>
-					Automatic staking & compounding.
-				</motion.div>
-				<motion.div className="third"
-					initial={{ x: "-80%", opacity: 0 }}
-					animate={{ x: "1%", opacity: 1 }}
-					transition={{ duration: txt_duration, delay: txt3_delay }}
-				>
-					1% daily passive income.
-				</motion.div>
-			</div>
-			<div className="buy">
-				<motion.div className="d-none d-lg-block d-xl-block"
-					initial={{ opacity: 0 }}
-					animate={{ opacity: 1 }}
-					transition={{ duration: txt_duration, delay: buy_delay }}
-				>
-					<button className="btn-buy">buy $insig</button>
-					<div className="sub-btn-text">
-						& join our social networks
-					</div>
-					<div className="sub-btn-links">
-						<a href="#" target="_blank"><img src="/img/social/discord.svg"></img></a>
-						<a href="#" target="_blank"><img src="/img/social/twitter.svg"></img></a>
-					</div>
-				</motion.div>
+			<div className="row">
+				<div className="txt1 col-12 col-xl-8">
+					<motion.div className="first"
+						initial={{ x: "-80%", opacity: 0 }}
+						animate={{ x: "5%", opacity: 1 }}
+						transition={{ duration: txt_duration }}
+					>
+						<span className="d-none d-xl-block big">{content1}</span>
+						<span className="d-block d-xl-none small">{content1}</span>
+					</motion.div>
+					<motion.div className="second"
+						initial={{ x: "-80%", opacity: 0 }}
+						animate={{ x: "5%", opacity: 1 }}
+						transition={{ duration: txt_duration, delay: txt2_delay }}
+					>
+						<span className="d-none d-xl-block big">{content2}</span>
+						<span className="d-block d-xl-none small">{content2}</span>
+					</motion.div>
+					<motion.div className="third"
+						initial={{ x: "-80%", opacity: 0 }}
+						animate={{ x: "5%", opacity: 1 }}
+						transition={{ duration: txt_duration, delay: txt3_delay }}
+					>
+						<span className="d-none d-xl-block big">{content3}</span>
+						<span className="d-block d-xl-none small">{content3}</span>
+					</motion.div>
+				</div>
+				<div className="buy col-12 col-xl-4">
+					<motion.div
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						transition={{ duration: txt_duration, delay: buy_delay }}
+					>
+						<button className="btn-buy">buy $insig</button>
+						<div className="sub-btn-text">
+							& join our social networks
+						</div>
+						<div className="sub-btn-links">
+							<a href="#" target="_blank"><img src="/img/social/discord.svg"></img></a>
+							<a href="#" target="_blank"><img src="/img/social/twitter.svg"></img></a>
+						</div>
+					</motion.div>
+				</div>
 			</div>
 		</div>
 	);
@@ -76,7 +88,7 @@ function Explain() {
 		<div className="explain">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 col-md-7">
+					<div className="col-12 col-xxl-7">
 						<div className="detail">
 							<motion.div className="title"
 								initial={{ x: "-80%", opacity: 0 }}
@@ -84,8 +96,8 @@ function Explain() {
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								<span className="d-none d-md-block big">How it works</span>
-								<span className="d-block d-md-none small">How it works</span>
+								<span className="d-none d-xl-block big">How it works</span>
+								<span className="d-block d-xl-none small">How it works</span>
 							</motion.div>
 							<motion.div className="content"
 								initial={{ x: "-80%", opacity: 0 }}
@@ -93,16 +105,16 @@ function Explain() {
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								<span className="d-none d-md-block big">{content1}</span>
-								<span className="d-block d-md-none small">{content1}</span>
+								<span className="d-none d-xl-block big">{content1}</span>
+								<span className="d-block d-xl-none small">{content1}</span>
 								<br />
 								<br />
-								<span className="d-none d-md-block big">{content2}</span>
-								<span className="d-block d-md-none small">{content2}</span>
+								<span className="d-none d-xl-block big">{content2}</span>
+								<span className="d-block d-xl-none small">{content2}</span>
 							</motion.div>
 						</div>
 					</div>
-					<div className="col-12 col-md-5">
+					<div className="col-12 col-xxl-5">
 						<div className="image">
 							<motion.img src="./img/infographic-explain.png" alt=""
 								initial={{ x: "100%", opacity: 0 }}
@@ -132,8 +144,8 @@ function Backed() {
 				viewport={{ once: true }}
 				transition={{ duration: duration }}
 			>
-				<span className="d-none d-md-block big">Backed rewards</span>
-				<span className="d-block d-md-none small">Backed rewards</span>
+				<span className="d-none d-xl-block big">Backed rewards</span>
+				<span className="d-block d-xl-none small">Backed rewards</span>
 			</motion.div>
 			<motion.div className="content"
 				initial={{ x: "100%", opacity: 0 }}
@@ -141,12 +153,12 @@ function Backed() {
 				viewport={{ once: true }}
 				transition={{ duration: duration }}
 			>
-				<span className="d-none d-md-block big">{content1}</span>
-				<span className="d-block d-md-none small">{content1}</span>
+				<span className="d-none d-xl-block big">{content1}</span>
+				<span className="d-block d-xl-none small">{content1}</span>
 				<br />
 				<br />
-				<span className="d-none d-md-block big">{content2}</span>
-				<span className="d-block d-md-none small">{content2}</span>
+				<span className="d-none d-xl-block big">{content2}</span>
+				<span className="d-block d-xl-none small">{content2}</span>
 			</motion.div>
 		</div>
 	);
@@ -155,11 +167,11 @@ function Backed() {
 		<div className="backed">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 d-block d-md-none small">
+					<div className="col-12 d-block d-xxl-none small">
 						{content()}
 					</div>
 
-					<div className="col-12 col-md-4">
+					<div className="col-12 col-xxl-4">
 						<div className="image">
 							<motion.img src="./img/infographic-backed.png" alt=""
 								initial={{ x: "-80%", opacity: 0 }}
@@ -170,7 +182,7 @@ function Backed() {
 						</div>
 					</div>
 
-					<div className="col-8 d-none d-md-block">
+					<div className="col-8 d-none d-xxl-block">
 						{content()}
 					</div>
 				</div>
@@ -187,7 +199,7 @@ function Stats() {
 		<div className="stats">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 col-md-12">
+					<div className="col-12">
 						<div className="detail">
 							<motion.div className="title"
 								initial={{ opacity: 0 }}
@@ -195,8 +207,8 @@ function Stats() {
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								<span className="d-none d-md-block big">State of the market</span>
-								<span className="d-block d-md-none small">State of the market</span>
+								<span className="d-none d-xl-block big">State of the market</span>
+								<span className="d-block d-xl-none small">State of the market</span>
 							</motion.div>
 							<motion.div className="content"
 								initial={{ opacity: 0 }}
@@ -207,32 +219,41 @@ function Stats() {
 							</motion.div>
 						</div>
 					</div>
-					<div className="col-12 col-md-12">
+					<div className="col-12">
 						<motion.div className="row"
 							initial={{ opacity: 0 }}
 							whileInView={{ opacity: 1 }}
 							viewport={{ once: true }}
 							transition={{ duration: duration }}
 						>
-							<div className="col-md-2"></div>
-							<div className="block-stats col-md-4">
+							<div className="d-none d-xl-block col-xxl-2"></div>
+							<div className="block-stats col-md-12 col-xxl-4">
 								<div className="numbers">
-									<div className="intit">420000 $INSIG</div>
+									<div className="intit">
+										<span className="d-none d-xl-block big">4200000 $INSIG</span>
+										<span className="d-block d-xl-none small">4200000 $INSIG</span>
+									</div>
 									<div className="intit-sub">Total supply</div>
-									<div className="intit">$0.00001</div>
+									<div className="intit">
+										<span className="d-none d-xl-block big">$0.00001</span>
+										<span className="d-block d-xl-none small">$0.00001</span>
+									</div>
 									<div className="intit-sub">Current USD value for one INSIG</div>
-									<div className="intit">$0.00001</div>
+									<div className="intit">
+										<span className="d-none d-xl-block big">$0.00001</span>
+										<span className="d-block d-xl-none small">$0.00001</span>
+									</div>
 									<div className="intit-sub">Market capitalisation</div>
 								</div>
 							</div>
-							<div className="block-links col-md-4">
+							<div className="block-links col-md-12 col-xxl-5">
 								<div className="numbers">
 									<a href="#" target="_blank"><button className="btn-dexscreener">dexscreener</button></a>
 									<button className="btn-cmc" disabled>coinmarketcap</button>
 									<button className="btn-coingecko" disabled>coingecko</button>
 								</div>
 							</div>
-							<div className="col-md-2"></div>
+							<div className="d-none d-xl-block col-xxl-1"></div>
 						</motion.div>
 					</div>
 				</div>
@@ -303,7 +324,7 @@ function Howtobuy() {
 					</div>
 					<div className="col-12 col-md-12">
 						<div className="row">
-							<div className="col-12 col-md-6 howtobuy-img">
+							<div className="col-12 col-xxl-6 howtobuy-img">
 								<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
 									initial={{ x: "-80%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
@@ -312,7 +333,7 @@ function Howtobuy() {
 								></motion.img></a>
 							</div>
 
-							<div className="col-12 col-md-6 howtobuy-img">
+							<div className="col-12 col-xxl-6 howtobuy-img">
 								<CopyToClipboard text={contract}><motion.img className="clickable" src="./img/infographic-howtobuy2.png" alt=""
 									initial={{ x: "100%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
@@ -336,12 +357,13 @@ function About() {
 		<div className="about">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 col-md-6 banner">
+					<div className="col-12 col-lg-6 banner">
 						<img src="./img/banner.png" alt="banner" />
 						<br />
 						<div className="coin"><img src="./img/logo_coin_small.png" alt="coin" /> INSIG</div>
+						<div className="address">{INSIGNIS_CONTRACT}</div>
 					</div>
-					<div className="col-12 col-md-6">
+					<div className="col-12 col-lg-6">
 						<div className="row">
 							<div className="col-4">
 								<div className="title">Contact us</div>
