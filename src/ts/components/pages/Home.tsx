@@ -304,7 +304,7 @@ function Howtobuy() {
 
 						<div className="row">
 							<div className="col-12 howtobuy-contract">
-								<span className="address">{contract}</span>
+								<span className="address">ADDRESS: {contract}</span>
 							</div>
 						</div>
 					</div>
@@ -322,6 +322,35 @@ function About() {
 		<div className="about">
 			<div className="container-fluid">
 				<div className="row">
+					<div className="col-12 col-md-6 center">
+						<img src="./img/banner.png" alt="banner" />
+					</div>
+					<div className="col-12 col-md-6">
+						<div className="row">
+							<div className="col-4">
+								<div className="title">Contact us</div>
+								<ol>
+									<a href="mailto: contact@primitivealgorithm.com"><li className="about-link">Contact</li></a>
+									<a href="mailto: business@primitivealgorithm.com"><li className="about-link">Business</li></a>
+								</ol>
+							</div>
+							<div className="col-4">
+								<div className="title">Join the community</div>
+								<ol>
+									<a href="#" target="_blank"><li className="about-link">Discord</li></a>
+									<a href="#" target="_blank"><li className="about-link">Twitter</li></a>
+								</ol>
+							</div>
+							<div className="col-4">
+								<div className="title">Links</div>
+								<ol>
+									<a href="#" target="_blank"><li className="about-link">Whitepaper</li></a>
+									<a href="https://www.harmony.one" target="_blank"><li className="about-link">Harmony</li></a>
+									<a href="https://viperswap.one" target="_blank"><li className="about-link">ViperSwap</li></a>
+								</ol>
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -341,4 +370,4 @@ export default function Home() {
 			<About />
 		</div>
 	);
-}
+};;

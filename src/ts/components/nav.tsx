@@ -57,7 +57,7 @@ export default function Header() {
 		<header>
 			<nav>
 				<div className="banner">
-					<Link to="/" className="home-link" title="Home"><img src="./img/banner.png" /></Link>
+					<Link to="/" className="home-link" title="Home"><img src="./img/banner.png" alt="banner" /></Link>
 				</div>
 				<ul>
 					<li><NavLink to="/stake" className="nav-item" activeClassName="nav-item active">Wallet</NavLink></li>

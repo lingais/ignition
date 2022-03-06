@@ -191,6 +191,41 @@
   .about {
     height: 780px;
     background: #071625;
+
+    .center {
+      text-align: center;
+    }
+
+    .container-fluid {
+      padding-top: 80px;
+    }
+
+    .title {
+      color: #dfdfdf;
+      margin-bottom: 20px;
+      font-size: 18px;
+    }
+
+    ol {
+      padding: 0;
+
+      a {
+        text-decoration: none;
+        color: #aaaaaa;
+
+        li {
+          width: auto;
+          list-style-type: none;
+          margin-bottom: 5px;
+          padding: 15px 0;
+          transition: 0.2s color;
+
+          &:hover {
+            color: rgb(255, 227, 136);
+          }
+        }
+      }
+    }
   }
   /// }}}
 
