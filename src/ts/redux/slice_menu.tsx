@@ -8,6 +8,7 @@ export const slice_menu = createSlice({
   initialState: {
     selected: null,
     active: false,
+    clickable: false,
     list: []
   },
   reducers: {
@@ -24,12 +25,18 @@ export const slice_menu = createSlice({
       state.list = action.payload;
     },
     /** }}} */
+    /** reducer: update_clickable {{{ */
+    update_clickable: (state, action) => {
+      state.clickable = action.payload;
+    },
+    /** }}} */
   },
 });
 
 export const {
   update_selected,
-  update_list
+  update_list,
+  update_clickable
 } = slice_menu.actions;
 export type RootState = ReturnType<typeof slice_menu.reducer>;
 export default slice_menu.reducer;

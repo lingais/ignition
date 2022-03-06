@@ -25,6 +25,8 @@ header {
 		align-items: center;
 
 		.menu {
+			position: relative;
+			top: 20px;
 			margin: 0;
 			padding: 0;
 			display: flex;
@@ -59,7 +61,7 @@ header {
 			// class: sub-items {{{
 			.sub-items {
 				padding: 20px 5px;
-				height: 25px;
+				height: 55px;
 
 				// element: a {{{
 				a {

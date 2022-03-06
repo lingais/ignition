@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import store from '../redux/store';
 import { update_web3 } from '../redux/slice_web3';
 import { HARMONY_TESTNET, HARMONY_MAINNET } from '../constant';
-import { update_selected, update_list } from '../redux/slice_menu';
+import { update_selected, update_list, update_clickable } from '../redux/slice_menu';
 
 export default function Header() {
 	const selected = useSelector((state: any) => state.menu.selected);
@@ -63,16 +63,24 @@ export default function Header() {
 
 		store.dispatch(update_list(menu_sub_list(item)));
 		store.dispatch(update_selected(item));
+		store.dispatch(update_clickable(true));
 	};
 	/** }}} */
 	/** function: menu_leave {{{ */
 	const menu_leave = () => {
 		store.dispatch(update_selected(null));
+
+		setTimeout(() => {
+			const state = store.getState();
+
+			if (!state.menu.active) store.dispatch(update_clickable(false));
+		}, 500);
 	};
 	/** }}} */
 	/** function: menu_sub {{{ */
 	const menu_sub = (): JSX.Element => {
 		const active = useSelector((state: any) => state.menu.active);
+		const clickable = useSelector((state: any) => state.menu.clickable);
 		const items: Array<Menu_SubItems> = useSelector((state: any) => state.menu.list);
 		const list: Array<JSX.Element> = [];
 
@@ -107,7 +115,9 @@ export default function Header() {
 				variants={variants}
 				animate={active ? "show" : "hide"}
 			>
-				{list}
+				{clickable &&
+					list
+				}
 			</motion.div>
 		);
 	};
