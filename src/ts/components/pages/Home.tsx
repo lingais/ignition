@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { motion } from 'framer-motion';
-import {CopyToClipboard} from 'react-copy-to-clipboard';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
+import * as Scroll from 'react-scroll';
+import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 
 /** component: front {{{ */
 function Front() {
@@ -264,7 +266,7 @@ function Howtobuy() {
 	const contract = "0x0000000000";
 
 	return (
-		<div className="howtobuy">
+		<div id="buynow" className="howtobuy">
 			<div className="container-fluid">
 				<div className="row">
 					<div className="col-12 col-md-12">
@@ -282,28 +284,27 @@ function Howtobuy() {
 					<div className="col-12 col-md-12">
 						<div className="row">
 							<div className="col-6 howtobuy-img">
-								<motion.img src="./img/infographic-howtobuy1.png" alt=""
+								<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
 									initial={{ x: "-40%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
 									viewport={{ once: true }}
 									transition={{ duration: duration }}
-								></motion.img>
+								></motion.img></a>
 							</div>
 
 							<div className="col-6 howtobuy-img">
-								<motion.img src="./img/infographic-howtobuy2.png" alt=""
+								<CopyToClipboard text={contract}><motion.img src="./img/infographic-howtobuy2.png" alt=""
 									initial={{ x: "100%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
 									viewport={{ once: true }}
 									transition={{ duration: duration }}
-								></motion.img>
+								></motion.img></CopyToClipboard>
 							</div>
 						</div>
 
 						<div className="row">
 							<div className="col-12 howtobuy-contract">
-								<span className="address">{ contract }</span>
-								<CopyToClipboard text={contract}><button className="btn-copy">Copy address</button></CopyToClipboard>
+								<span className="address">{contract}</span>
 							</div>
 						</div>
 					</div>
