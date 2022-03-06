@@ -18,6 +18,8 @@ function Front() {
 	const content2 = "Automatic staking & compounding.";
 	const content3 = "1% daily passive income.";
 
+	const Link = Scroll.Link;
+
 	return (
 		<div className="front">
 			<div className="txt2">
@@ -63,7 +65,12 @@ function Front() {
 						animate={{ opacity: 1 }}
 						transition={{ duration: txt_duration, delay: buy_delay }}
 					>
-						<button className="btn-buy">buy $insig</button>
+						<Link to="howtobuy"
+							smooth={true}
+							duration={500}
+							delay={0}
+							isDynamic={true}
+						><button className="btn-buy">buy $insig</button></Link>
 						<div className="sub-btn-text">
 							& join our social networks
 						</div>
@@ -304,46 +311,49 @@ function Roadmap() {
 function Howtobuy() {
 	const duration = 0.75;
 	const contract = "0x0000000000";
+	const Element = Scroll.Element;
 
 	return (
 		<div id="buynow" className="howtobuy">
 			<div className="container-fluid">
-				<div className="row">
-					<div className="col-12 col-md-12">
-						<div className="detail">
-							<motion.div className="title"
-								initial={{ opacity: 0 }}
-								whileInView={{ opacity: 1 }}
-								viewport={{ once: true }}
-								transition={{ duration: duration }}
-							>
-								<span className="d-none d-md-block big">How to buy</span>
-								<span className="d-block d-md-none small">How to buy</span>
-							</motion.div>
-						</div>
-					</div>
-					<div className="col-12 col-md-12">
-						<div className="row">
-							<div className="col-12 col-xxl-6 howtobuy-img">
-								<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
-									initial={{ x: "-80%", opacity: 0 }}
-									whileInView={{ x: "1%", opacity: 1 }}
+				<Element name="howtobuy">
+					<div className="row">
+						<div className="col-12 col-md-12">
+							<div className="detail">
+								<motion.div className="title"
+									initial={{ opacity: 0 }}
+									whileInView={{ opacity: 1 }}
 									viewport={{ once: true }}
 									transition={{ duration: duration }}
-								></motion.img></a>
+								>
+									<span className="d-none d-md-block big">How to buy</span>
+									<span className="d-block d-md-none small">How to buy</span>
+								</motion.div>
 							</div>
+						</div>
+						<div className="col-12 col-md-12">
+							<div className="row">
+								<div className="col-12 col-xxl-6 howtobuy-img">
+									<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
+										initial={{ x: "-80%", opacity: 0 }}
+										whileInView={{ x: "1%", opacity: 1 }}
+										viewport={{ once: true }}
+										transition={{ duration: duration }}
+									></motion.img></a>
+								</div>
 
-							<div className="col-12 col-xxl-6 howtobuy-img">
-								<CopyToClipboard text={contract}><motion.img className="clickable" src="./img/infographic-howtobuy2.png" alt=""
-									initial={{ x: "100%", opacity: 0 }}
-									whileInView={{ x: "1%", opacity: 1 }}
-									viewport={{ once: true }}
-									transition={{ duration: duration }}
-								></motion.img></CopyToClipboard>
+								<div className="col-12 col-xxl-6 howtobuy-img">
+									<CopyToClipboard text={contract}><motion.img className="clickable" src="./img/infographic-howtobuy2.png" alt=""
+										initial={{ x: "100%", opacity: 0 }}
+										whileInView={{ x: "1%", opacity: 1 }}
+										viewport={{ once: true }}
+										transition={{ duration: duration }}
+									></motion.img></CopyToClipboard>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+				</Element>
 			</div>
 		</div>
 	);
