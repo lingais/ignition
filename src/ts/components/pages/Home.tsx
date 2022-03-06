@@ -1,8 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import * as Scroll from 'react-scroll';
-import { Link, Button, Element, Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll';
 import { INSIGNIS_CONTRACT } from '../../constant';
 
 /** component: Front {{{ */
@@ -67,7 +66,7 @@ function Front() {
 					>
 						<Link to="howtobuy"
 							smooth={true}
-							duration={500}
+							duration={50}
 							delay={0}
 							isDynamic={true}
 						><button className="btn-buy">buy $insig</button></Link>
