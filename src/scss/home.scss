@@ -1,7 +1,7 @@
 .home {
   /// component: front {{{
   .front {
-    height: 100vh;
+    min-height: 100vh;
     background: $background-front;
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
@@ -76,7 +76,7 @@
   /// }}}
   /// component: explain {{{
   .explain {
-    height: 780px;
+    min-height: 780px;
     background: $background-explain;
 
     .detail {
@@ -86,7 +86,7 @@
   /// }}}
   /// component: backed {{{
   .backed {
-    height: 780px;
+    min-height: 780px;
     background: $background-backed;
 
     .detail {
@@ -96,7 +96,7 @@
   /// }}}
   /// component: stats {{{
   .stats {
-    height: 780px;
+    min-height: 780px;
     background: $background-stats;
 
     // class: title {{{
@@ -141,7 +141,7 @@
   /// }}}
   /// component: roadmap {{{
   .roadmap {
-    height: 780px;
+    min-height: 780px;
     background: $background-roadmap;
 
     // class: title {{{
@@ -169,6 +169,7 @@
     // class: howtobuy-img {{{
     .howtobuy-img {
       text-align: center;
+      margin-bottom: 50px;
     }
     /// }}}
     // class: howtobuy-contract {{{
@@ -194,6 +195,7 @@
 
     .banner {
       text-align: center;
+      margin-bottom: 100px;
     }
 
     .coin {
@@ -243,13 +245,24 @@
     padding: 50px 140px;
 
     .title {
-      font-size: 76px;
       font-weight: bold;
       text-transform: uppercase;
+
+      .big {
+        font-size: 76px;
+      }
+      .small {
+        font-size: 36px;
+      }
     }
 
     .content {
-      font-size: 24px;
+      .big {
+        font-size: 24px;
+      }
+      .small {
+        font-size: 18px;
+      }
     }
   }
   /// }}}

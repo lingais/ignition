@@ -25,25 +25,25 @@ function Front() {
 			</div>
 			<div className="txt1">
 				<motion.div className="first"
-					initial={{ x: "-40%", opacity: 0 }}
+					initial={{ x: "-80%", opacity: 0 }}
 					animate={{ x: "1%", opacity: 1 }}
 					transition={{ duration: txt_duration }}
 				>
-					Lightspeed transactions.
+					First Titano fork on Harmony.
 				</motion.div>
 				<motion.div className="second"
-					initial={{ x: "-40%", opacity: 0 }}
+					initial={{ x: "-80%", opacity: 0 }}
 					animate={{ x: "1%", opacity: 1 }}
 					transition={{ duration: txt_duration, delay: txt2_delay }}
 				>
-					Autonomous staking.
+					Automatic staking & compounding.
 				</motion.div>
 				<motion.div className="third"
-					initial={{ x: "-40%", opacity: 0 }}
+					initial={{ x: "-80%", opacity: 0 }}
 					animate={{ x: "1%", opacity: 1 }}
 					transition={{ duration: txt_duration, delay: txt3_delay }}
 				>
-					15123123% annual income.
+					1% daily passive income.
 				</motion.div>
 			</div>
 			<div className="buy">
@@ -69,6 +69,8 @@ function Front() {
 /** component: Explain {{{ */
 function Explain() {
 	const duration = 0.75;
+	const content1 = "Insignis is the first Titano fork on the Harmony blockchain. It is a rebase cryptocurrency which automatically grows by holding it alone.";
+	const content2 = "Holders actually holds a share of Insignis's total supply. On each rebase, the total supply grows, thus increasing holders owned value.";
 
 	return (
 		<div className="explain">
@@ -77,23 +79,26 @@ function Explain() {
 					<div className="col-12 col-md-7">
 						<div className="detail">
 							<motion.div className="title"
-								initial={{ x: "-20%", opacity: 0 }}
+								initial={{ x: "-80%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								how insignis work
+								<span className="d-none d-md-block big">How it works</span>
+								<span className="d-block d-md-none small">How it works</span>
 							</motion.div>
 							<motion.div className="content"
-								initial={{ x: "-20%", opacity: 0 }}
+								initial={{ x: "-80%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								Insignis is the first Titano fork on the Harmony blockchain. It is a rebase cryptocurrency which automatically grows by holding it alone.
+								<span className="d-none d-md-block big">{content1}</span>
+								<span className="d-block d-md-none small">{content1}</span>
 								<br />
 								<br />
-								Holders actually holds a share of Insignis's total supply. On each rebase, the total supply grows, thus increasing holders owned value.
+								<span className="d-none d-md-block big">{content2}</span>
+								<span className="d-block d-md-none small">{content2}</span>
 							</motion.div>
 						</div>
 					</div>
@@ -116,15 +121,48 @@ function Explain() {
 /** component: Backed {{{ */
 function Backed() {
 	const duration = 0.75;
+	const content1 = "Thanks to a system of transaction taxes, those taxes are directly sent to Risk Free Value Wallet that is used for buyback & burn.";
+	const content2 = "Those taxes are also used to fund marketing operations and active development on what is to come!";
+
+	const content = () => (
+		<div className="detail">
+			<motion.div className="title"
+				initial={{ x: "100%", opacity: 0 }}
+				whileInView={{ x: "1%", opacity: 1 }}
+				viewport={{ once: true }}
+				transition={{ duration: duration }}
+			>
+				<span className="d-none d-md-block big">Backed rewards</span>
+				<span className="d-block d-md-none small">Backed rewards</span>
+			</motion.div>
+			<motion.div className="content"
+				initial={{ x: "100%", opacity: 0 }}
+				whileInView={{ x: "1%", opacity: 1 }}
+				viewport={{ once: true }}
+				transition={{ duration: duration }}
+			>
+				<span className="d-none d-md-block big">{content1}</span>
+				<span className="d-block d-md-none small">{content1}</span>
+				<br />
+				<br />
+				<span className="d-none d-md-block big">{content2}</span>
+				<span className="d-block d-md-none small">{content2}</span>
+			</motion.div>
+		</div>
+	);
 
 	return (
 		<div className="backed">
 			<div className="container-fluid">
 				<div className="row">
+					<div className="col-12 d-block d-md-none small">
+						{content()}
+					</div>
+
 					<div className="col-12 col-md-4">
 						<div className="image">
 							<motion.img src="./img/infographic-backed.png" alt=""
-								initial={{ x: "-20%", opacity: 0 }}
+								initial={{ x: "-80%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
@@ -132,28 +170,8 @@ function Backed() {
 						</div>
 					</div>
 
-					<div className="col-12 col-md-8">
-						<div className="detail">
-							<motion.div className="title"
-								initial={{ x: "100%", opacity: 0 }}
-								whileInView={{ x: "1%", opacity: 1 }}
-								viewport={{ once: true }}
-								transition={{ duration: duration }}
-							>
-								backed rewards
-							</motion.div>
-							<motion.div className="content"
-								initial={{ x: "100%", opacity: 0 }}
-								whileInView={{ x: "1%", opacity: 1 }}
-								viewport={{ once: true }}
-								transition={{ duration: duration }}
-							>
-								Thanks to a system of transaction taxes, those taxes are directly sent to Risk Free Value Wallet that is used for buyback & burn.
-								<br />
-								<br />
-								Those taxes are also used to fund marketing operations and active development on what is to come!
-							</motion.div>
-						</div>
+					<div className="col-8 d-none d-md-block">
+						{content()}
 					</div>
 				</div>
 			</div>
@@ -177,7 +195,8 @@ function Stats() {
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								State of the market
+								<span className="d-none d-md-block big">State of the market</span>
+								<span className="d-block d-md-none small">State of the market</span>
 							</motion.div>
 							<motion.div className="content"
 								initial={{ opacity: 0 }}
@@ -277,22 +296,23 @@ function Howtobuy() {
 								viewport={{ once: true }}
 								transition={{ duration: duration }}
 							>
-								How to buy
+								<span className="d-none d-md-block big">How to buy</span>
+								<span className="d-block d-md-none small">How to buy</span>
 							</motion.div>
 						</div>
 					</div>
 					<div className="col-12 col-md-12">
 						<div className="row">
-							<div className="col-6 howtobuy-img">
+							<div className="col-12 col-md-6 howtobuy-img">
 								<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
-									initial={{ x: "-20%", opacity: 0 }}
+									initial={{ x: "-80%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
 									viewport={{ once: true }}
 									transition={{ duration: duration }}
 								></motion.img></a>
 							</div>
 
-							<div className="col-6 howtobuy-img">
+							<div className="col-12 col-md-6 howtobuy-img">
 								<CopyToClipboard text={contract}><motion.img className="clickable" src="./img/infographic-howtobuy2.png" alt=""
 									initial={{ x: "100%", opacity: 0 }}
 									whileInView={{ x: "1%", opacity: 1 }}
