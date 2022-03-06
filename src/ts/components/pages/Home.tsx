@@ -247,7 +247,7 @@ function Stats() {
 								</div>
 							</div>
 							<div className="block-links col-md-12 col-xxl-5">
-								<div className="numbers">
+								<div className="links">
 									<a href="#" target="_blank"><button className="btn-dexscreener">dexscreener</button></a>
 									<button className="btn-cmc" disabled>coinmarketcap</button>
 									<button className="btn-coingecko" disabled>coingecko</button>
