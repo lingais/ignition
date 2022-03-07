@@ -238,7 +238,7 @@
     }
 
     .title {
-      color: #dfdfdf;
+      color: $link-menu-highlight;
       margin-bottom: 20px;
       font-size: 18px;
     }
@@ -248,7 +248,7 @@
 
       a {
         text-decoration: none;
-        color: #aaaaaa;
+        color: $link-menu-hid;
 
         li {
           width: auto;

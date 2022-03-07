@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { format, addDays, startOfDay, formatDistance, fromUnixTime, differenceInSeconds } from 'date-fns';
 import Web3 from 'web3';
 import { HARMONY_MAINNET } from '../constant';
 import { INSIGNIS_DECIMALS } from '../constant';
@@ -31,7 +32,13 @@ export const slice_web3 = createSlice({
     /** }}} */
     /** reducer: update_balance {{{ */
     update_balance: (state, action) => {
-      state.balance = action.payload / Math.pow(10, INSIGNIS_DECIMALS);
+      const old_balance = state.balance;
+      const new_balance = action.payload;
+      const difference = new_balance - old_balance;
+
+      if (Math.abs(difference) > 0) {
+        state.balance = action.payload;
+      }
     },
     /** }}} */
     /** reducer: update_rebase_timer {{{ */

@@ -1,21 +1,21 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { motion } from 'framer-motion';
-import store from '../../redux/store';
+import { INSIGNIS_DECIMALS } from '../../constant';
 
-import { trigger_heartbeat } from '../../redux/slice_countdown';
+// @ts-ignore
+import AnimatedNumber from "animated-number-react";
+import store from '../../redux/store';
 import Wallet from '../sub/Wallet';
 
 export default function Stake() {
 	const dispatch = useDispatch();
-
 	const wallet = useSelector((state: any) => state.web3.wallet);
 	const epoch = useSelector((state: any) => state.web3.epoch);
-	const balance = useSelector((state: any) => state.web3.balance);
-	const rebase_timer = useSelector((state: any) => state.web3.rebase_timer);
+	const balance = useSelector((state: any) => state.web3.balance) / Math.pow(10, INSIGNIS_DECIMALS);
 	const balance_next = balance * 1.02;
-
 	const heartbeat = useSelector((state: any) => state.countdown.heartbeat);
+	const rebase_timer = useSelector((state: any) => state.countdown.timer_rebase);
 
 	return (
 		<motion.div className="stake"
@@ -42,7 +42,23 @@ export default function Stake() {
 								ease: "backIn",
 							}}
 						/>
-					test
+						<div className="balance">
+							<div className="amount">
+								<AnimatedNumber
+									value={balance}
+									formatValue={(balance: number) => balance.toFixed(2)}
+									duration={1000}
+								/>
+							</div>
+							<div className="sub"><img src="./img/logo_coin_small.png" alt="coin" /> INSIG balance</div>
+
+							<div className="timer">{ rebase_timer }</div>
+							<div className="sub">Next rebase</div>
+
+							<div className="roi">1%</div>
+							<div className="sub">Daily ROI</div>
+						</div>
+
 					</div>
 				</div>
 				<div className="col-md-3"></div>

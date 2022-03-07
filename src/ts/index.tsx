@@ -5,11 +5,155 @@ import { Provider } from 'react-redux';
 import '../scss/index.scss';
 import 'animate.css';
 import 'regenerator-runtime/runtime';
+import { AbiItem } from 'web3-utils';
+
+import { update_wallet, update_balance, update_epoch, update_network } from './redux/slice_web3';
+import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT } from './constant';
+import { trigger_heartbeat, timer_rebase_update } from './redux/slice_countdown';
 
 import store from './redux/store';
 import Router from './components/router';
 
+/** function: listen {{{ */
+const listen = (): void => {
+	setInterval(async () => {
+		await listen_network();
+		await listen_wallet();
+		await listen_epoch();
+		await listen_balance();
+
+		console.log("should be once in a second");
+	}, 1000);
+	setInterval(async () => {
+		listen_rebase_timer();
+	}, 250);
+
+	subscribe_heartbeat_trigger();
+
+	// test purposes
+	setTimeout(async () => {
+		//subscribe_heartbeat_trigger();
+	}, 40000);
+};
+/** }}} */
+/** function: listen_network {{{ */
+const listen_network = async (): Promise<void> => {
+	try {
+		const state = store.getState();
+		const network = (await state.web3.web3.eth.net.getId());
+
+		if (state.web3.network != network) store.dispatch(update_network(network));
+	} catch (error) {
+		console.error(error);
+	}
+};
+/** }}} */
+/** function: listen_wallet {{{ */
+const listen_wallet = async (): Promise<void> => {
+	if (is_network_correct()) {
+		const state = store.getState();
+		const selected = (await state.web3.web3.eth.getAccounts())[0];
+
+		if (state.web3.wallet != selected) store.dispatch(update_wallet(selected));
+	}
+
+	else {
+		store.dispatch(update_wallet(null));
+	}
+};
+/** }}} */
+/** function: listen_balance {{{ */
+const listen_balance = async (): Promise<void> => {
+	if (is_wallet_correct()) {
+		try {
+			const state = store.getState();
+			let balance: number = 0;
+
+			if (state.web3.wallet) {
+				const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
+
+				balance = parseFloat(await contract.methods.balanceOf(state.web3.wallet).call());
+			}
+
+			store.dispatch(update_balance(balance));
+		} catch (error) {
+			console.error("an error occured while probing for wallet's balance - are you using the correct network?");
+		}
+	}
+
+	else {
+		//store.dispatch(update_balance(0));
+	}
+};
+/** }}} */
+/** function: listen_epoch {{{ */
+const listen_epoch = async (): Promise<void> => {
+	// TODO: smart contract does not have a public getter for epoch index yet
+	if (is_wallet_correct()) {
+		try {
+			const state = store.getState();
+			let epoch = 0;
+
+			if (state.web3.wallet) {
+				const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
+				epoch = await contract.methods.getEpoch().call();
+			}
+
+			if (state.web3.epoch != epoch) store.dispatch(update_epoch(epoch));
+		} catch (error) {
+			console.error("an error occured while probing for Insignis's rebase epoch - are you using the correct network?");
+			console.error(error);
+		}
+	}
+
+	else {
+		store.dispatch(update_epoch(0));
+	}
+};
+/** }}} */
+/** function: listen_rebase_timer {{{ */
+const listen_rebase_timer = async (): Promise<void> => {
+	if (is_wallet_correct()) {
+		store.dispatch(timer_rebase_update());
+	}
+
+	else {
+		store.dispatch(timer_rebase_update());
+	}
+};
+/** }}} */
+
+/** function: subscribe_heartbeat_trigger {{{ */
+const subscribe_heartbeat_trigger = (): void => {
+	store.dispatch(trigger_heartbeat());
+
+	// required to turn off the heartbeat clock
+	setTimeout(() => {
+		store.dispatch(trigger_heartbeat());
+	}, 2000);
+};
+/** }}} */
+
+/** function: is_network_correct {{{ */
+const is_network_correct = (): boolean => {
+	const state = store.getState();
+
+	//return state.web3.network === HARMONY_MAINNET;
+	return state.web3.network === HARMONY_TESTNET;
+};
+/** }}} */
+/** function: is_wallet_correct {{{ */
+const is_wallet_correct = (): boolean => {
+	const state = store.getState();
+
+	if (state.web3.wallet && is_network_correct()) return true;
+	else return false;
+};
+/** }}} */
+
 (() => {
+	listen();
+
 	const htmlElementName: string = 'app';
 	const jsxElement: JSX.Element = (
 		<Provider store={store}>

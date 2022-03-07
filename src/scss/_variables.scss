@@ -21,3 +21,15 @@ $background-about: #071625;
 $block-padding: 60px 0;
 $block-detail-padding: 60px 140px;
 /// }}}
+/// links {{{
+$link-menu-highlight: #dfdfdf;
+$link-menu-hid: #aaaaaa;
+/// }}}
+/// stake {{{
+$stake-title-font-size: 64px;
+$stake-title-font-color: $link-menu-highlight;
+
+$stake-subtitle-font-size: 18px;
+$stake-subtitle-font-color: $link-menu-hid;
+$stake-subtitle-margin-bottom: 40px;
+/// }}}

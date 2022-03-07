@@ -27,6 +27,7 @@
 		"@types/webpack-env": "^1.15.1",
 		"@walletconnect/web3-provider": "^1.7.1",
 		"animate.css": "^4.1.1",
+		"animated-number-react": "^0.1.2",
 		"babel-core": "^6.26.3",
 		"babel-loader": "^8.1.0",
 		"bootstrap": "^5.1.3",
