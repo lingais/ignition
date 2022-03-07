@@ -12,10 +12,12 @@ import { AbiItem } from 'web3-utils';
 import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT, INSIGNIS_DECIMALS } from '../constant';
 import { Web3ContextProvider } from "react-dapp-web3";
 import { update_wallet, update_balance, RootState, update_rebase_timer, update_epoch, update_network } from '../redux/slice_web3';
+import { trigger_heartbeat } from '../redux/slice_countdown';
 
 export default function Routes() {
 	/** function: listen {{{ */
 	const listen = (): void => {
+		// TODO: move listen functions into the index file
 		listen_rebase_timer();
 
 		setInterval(async () => {
@@ -25,6 +27,10 @@ export default function Routes() {
 			await listen_balance();
 			listen_rebase_timer();
 		}, 1000);
+
+		setInterval(async () => {
+			store.dispatch(trigger_heartbeat());
+		}, 5000);
 	};
 	/** }}} */
 	/** function: listen_network {{{ */

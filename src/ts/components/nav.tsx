@@ -89,6 +89,11 @@ export default function Header() {
 						name: "Stake",
 						url: "./#/stake",
 						blank: false
+					},
+					{
+						name: "Calculator",
+						url: "./#/calculator",
+						blank: false
 					}
 				);
 				break;
