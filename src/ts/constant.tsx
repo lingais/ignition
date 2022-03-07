@@ -1,7 +1,9 @@
 export const HARMONY_TESTNET: number = 1666700000;
 export const HARMONY_MAINNET: number = 1666600000;
+export const LINK_DISCORD = "https://discord.gg/yPMSuPg6pB";
+export const LINK_TWITTER = "https://discord.gg/yPMSuPg6pB";
 export const INSIGNIS_CONTRACT: string = "0xAE47524D150B7B2afc9E3035E5ca78BBa38Ee927";
-export const INSIGNIS_LAUNCH_EPOCH: number = 0;
+export const INSIGNIS_LAUNCH_EPOCH: number = 164920000;
 export const INSIGNIS_DECIMALS: number = 6;
 export const INSIGNIS_ABI = [
 	{

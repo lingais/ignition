@@ -12,51 +12,6 @@ import { update_selected, update_list, update_clickable } from '../redux/slice_m
 export default function Header() {
 	const selected = useSelector((state: any) => state.menu.selected);
 
-	/** function: connect_wallet_click {{{ */
-	const connect_wallet_click = async (): Promise<void> => {
-		const state = store.getState();
-		const providerOptions = {
-			walletconnect: {
-				package: WalletConnectProvider,
-				options: {
-					infuraId: "INFURA_ID"
-				}
-			}
-		};
-		const web3Modal = new Web3Modal({
-			cacheProvider: false,
-			providerOptions,
-			theme: "dark"
-		});
-
-		web3Modal.clearCachedProvider();
-
-		const provider = await web3Modal.connect();
-
-		store.dispatch(() => update_web3(provider)); // updates web3 state
-	};
-	/** }}} */
-	/** function: connect_wallet_button {{{ */
-	const connect_wallet_button = (): JSX.Element => {
-		const wallet = useSelector((state: any) => state.web3.wallet);
-		const network = useSelector((state: any) => state.web3.network);
-		const is_network = network === HARMONY_TESTNET;
-
-		if (!is_network) {
-			return (<button className="btn btn-danger wallet-connect">Wrong network</button>);
-		}
-
-		else if (wallet) {
-			return (<button className="btn btn-success wallet-connect">Connected</button>);
-		}
-
-
-		else {
-			return (<button className="btn btn-warning wallet-connect" onClick={() => connect_wallet_click()}>Connect wallet</button>);
-		}
-	};
-	/** }}} */
-
 	/** function: menu_enter {{{ */
 	const menu_enter = (item: string) => {
 		//menu_leave(); // triggers menu_leave before entering a new menu
@@ -176,9 +131,6 @@ export default function Header() {
 
 						{menu_sub()}
 					</div>
-				</div>
-				<div className="connect">
-					{connect_wallet_button()}
 				</div>
 			</nav>
 		</header>

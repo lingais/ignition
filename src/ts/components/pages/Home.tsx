@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import * as Scroll from 'react-scroll';
-import { INSIGNIS_CONTRACT } from '../../constant';
+import { INSIGNIS_CONTRACT, LINK_DISCORD, LINK_TWITTER } from '../../constant';
 
 /** component: Front {{{ */
 function Front() {
@@ -74,8 +74,8 @@ function Front() {
 							& join our social networks
 						</div>
 						<div className="sub-btn-links">
-							<a href="#" target="_blank"><img src="/img/social/discord.svg"></img></a>
-							<a href="#" target="_blank"><img src="/img/social/twitter.svg"></img></a>
+							<a href={LINK_DISCORD} target="_blank"><img src="/img/social/discord.svg"></img></a>
+							<a href={LINK_TWITTER} target="_blank"><img src="/img/social/twitter.svg"></img></a>
 						</div>
 					</motion.div>
 				</div>
@@ -407,15 +407,18 @@ function About() {
 /** }}} */
 
 export default function Home() {
-
 	return (
-		<div className="home">
+		<motion.div className="home"
+			exit={{ opacity: 0 }}
+			animate={{ opacity: 1 }}
+			initial={{ opacity: 0 }}
+		>
 			<Front />
 			<Explain />
 			<Backed />
 			<Stats />
 			<Howtobuy />
 			<About />
-		</div>
+		</motion.div>
 	);
 };;

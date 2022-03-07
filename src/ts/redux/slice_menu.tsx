@@ -1,7 +1,4 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import Web3 from 'web3';
-import { HARMONY_MAINNET } from '../constant';
-import { INSIGNIS_DECIMALS } from '../constant';
+import { createSlice } from '@reduxjs/toolkit';
 
 export const slice_menu = createSlice({
   name: 'slice_menu',

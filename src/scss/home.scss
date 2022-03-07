@@ -1,3 +1,4 @@
+/// route: home {{{
 .home {
   /// component: front {{{
   .front {
@@ -299,7 +300,15 @@
   }
   /// }}}
 }
+/// }}}
+/// route: stake {{{
+.stake {
+  height: 100vh;
+  padding-top: 150px;
+}
+/// }}}
 
+/// class: btn-buy {{{
 .btn-buy {
   padding: 30px 0;
   min-width: 350px;
@@ -313,25 +322,31 @@
   box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px,
     rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
 }
-
+/// }}}
+/// class: btn-dexscreener {{{
 .btn-dexscreener {
   @include btn-stats($button-dexscreener-background);
 }
-
+/// }}}
+/// class: btn-copy {{{
 .btn-copy {
   @include btn-stats($button-dexscreener-background);
 }
-
+/// }}}
+/// class: btn-cmc {{{
 .btn-cmc {
   @include btn-stats($button-cmc-background);
 }
-
+/// }}}
+/// class: btn-coingecko {{{
 .btn-coingecko {
   @include btn-stats($button-coingecko-background);
 }
-
+/// }}}
+/// class: clickable {{{
 .clickable {
   &:hover {
     cursor: pointer;
   }
 }
+/// }}}

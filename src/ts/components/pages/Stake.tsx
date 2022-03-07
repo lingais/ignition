@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
+import Wallet from '../sub/Wallet';
 
 export default function Stake() {
 	const wallet = useSelector((state: any) => state.web3.wallet);
@@ -10,7 +11,7 @@ export default function Stake() {
 	const balance_next = balance * 1.02;
 
 	return (
-		<motion.div
+		<motion.div className="stake"
 			exit={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
 			initial={{ opacity: 0 }}
@@ -27,6 +28,8 @@ export default function Stake() {
 			<b>Epoch:</b> {epoch}
 			<br />
 			<b>Next rebase in:</b> {rebase_timer}  (not on schedule on the testnet)
+
+			<Wallet />
 		</motion.div>
 	);
 }
