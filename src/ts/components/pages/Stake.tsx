@@ -55,6 +55,47 @@ export default function Stake() {
 		);
 	};
 	/** }}} */
+	/** function: show_blockchain {{{ */
+	const show_blockchain = (big: boolean): JSX.Element => {
+		const content: JSX.Element = (
+			<div className={big ? "insignis-coin-xl" : "insignis-coin"}>
+				<motion.img className="coin" src="./img/logo.png" alt="Insignis Coin"
+					variants={{
+						pulse: {
+							scale: [1, 1.2, 1],
+							transition: {
+								delay: 0,
+							},
+						},
+					}}
+					animate={heartbeat ? "pulse" : ""}
+					transition={{
+						duration: 5,
+						ease: "backIn",
+					}}
+				/>
+
+				{show_balance()}
+			</div>
+		);
+
+		return (
+			<>
+				<div className="balance-xl">
+					<div className="d-none d-xl-block">
+						{content}
+					</div>
+				</div>
+
+				<div className="balance">
+					<div className="d-block d-xl-none">
+						{content}
+					</div>
+				</div>
+			</>
+		);
+	};
+	/** }}} */
 
 	return (
 		<motion.div className="stake"
@@ -65,24 +106,12 @@ export default function Stake() {
 			<div className="row">
 				<div className="col-md-3"></div>
 				<div className="col-12 col-md-7">
-					<div className="insignis-coin">
-						<motion.img src="./img/logo.png" alt="Insignis Coin"
-							variants={{
-								pulse: {
-									scale: [1, 1.2, 1],
-									transition: {
-										delay: 0,
-									},
-								},
-							}}
-							animate={heartbeat ? "pulse" : ""}
-							transition={{
-								duration: 5,
-								ease: "backIn",
-							}}
-						/>
+					<div className="d-none d-xl-block">
+						{show_blockchain(true)}
+					</div>
 
-						{show_balance()}
+					<div className="d-block d-xl-none">
+						{show_blockchain(false)}
 					</div>
 				</div>
 				<div className="col-md-3"></div>

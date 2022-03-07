@@ -1,13 +1,22 @@
 /// component: stake {{{
 .stake {
-  /// class: insignis-coin {{{
-  .insignis-coin {
+  /// class: insignis-coin-xl {{{
+  .insignis-coin-xl {
+    img.coin {
+      padding-top: 80px;
+    }
   }
   /// }}}
+/// class: insignis-coin {{{
+  .insignis-coin {
+    text-align: center;
+  }
+  /// }}}
+
   /// class: balance-xl {{{
   .balance-xl {
     position: absolute;
-    top: 160px;
+    top: 90px;
     padding-left: 80px;
     display: inline !important;
   }
