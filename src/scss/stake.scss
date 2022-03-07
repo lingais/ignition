@@ -4,39 +4,44 @@
   .insignis-coin {
   }
   /// }}}
-  /// class: balance {{{
-  .balance {
+  /// class: balance-xl {{{
+  .balance-xl {
     position: absolute;
     top: 160px;
     padding-left: 80px;
+    display: inline !important;
+  }
+  /// }}}
+  /// class: balance {{{
+  .balance {
     display: inline;
+  }
+  /// }}}
 
-    // class: amount {{{
-    .amount {
-      font-size: $stake-title-font-size;
-      color: $stake-title-font-color;
-    }
-    /// }}}
-    // class: roi {{{
-    .roi {
-      font-size: $stake-title-font-size;
-      color: $stake-title-font-color;
-    }
-    /// }}}
-    // class: timer {{{
-    .timer {
-      font-size: $stake-title-font-size;
-      color: $stake-title-font-color;
-    }
-    /// }}}
-    // class: sub {{{
-    .sub {
-      font-size: $stake-subtitle-font-size;
-      color: $stake-subtitle-font-color;
+  // class: amount {{{
+  .amount {
+    font-size: $stake-title-font-size;
+    color: $stake-title-font-color;
+  }
+  /// }}}
+  // class: roi {{{
+  .roi {
+    font-size: $stake-title-font-size;
+    color: $stake-title-font-color;
+  }
+  /// }}}
+  // class: timer {{{
+  .timer {
+    font-size: $stake-title-font-size;
+    color: $stake-title-font-color;
+  }
+  /// }}}
+  // class: sub {{{
+  .sub {
+    font-size: $stake-subtitle-font-size;
+    color: $stake-subtitle-font-color;
 
-      margin-bottom: $stake-subtitle-margin-bottom;
-    }
-    /// }}}
+    margin-bottom: $stake-subtitle-margin-bottom;
   }
   /// }}}
 }

@@ -17,6 +17,45 @@ export default function Stake() {
 	const heartbeat = useSelector((state: any) => state.countdown.heartbeat);
 	const rebase_timer = useSelector((state: any) => state.countdown.timer_rebase);
 
+	/** function: show_balance {{{ */
+	const show_balance = (): JSX.Element => {
+		const content: JSX.Element = (
+			<>
+				<div className="amount">
+					<AnimatedNumber
+						value={balance}
+						formatValue={(balance: number) => balance.toFixed(2)}
+						duration={1000}
+					/>
+				</div>
+				<div className="sub"><img src="./img/logo_coin_small.png" alt="coin" /> INSIG balance</div>
+
+				<div className="timer">{rebase_timer}</div>
+				<div className="sub">Next rebase</div>
+
+				<div className="roi">1%</div>
+				<div className="sub">Daily ROI</div>
+			</>
+		);
+
+		return (
+			<>
+				<div className="balance-xl">
+					<div className="d-none d-xl-block">
+						{content}
+					</div>
+				</div>
+
+				<div className="balance">
+					<div className="d-block d-xl-none">
+						{content}
+					</div>
+				</div>
+			</>
+		);
+	};
+	/** }}} */
+
 	return (
 		<motion.div className="stake"
 			exit={{ opacity: 0 }}
@@ -42,23 +81,8 @@ export default function Stake() {
 								ease: "backIn",
 							}}
 						/>
-						<div className="balance">
-							<div className="amount">
-								<AnimatedNumber
-									value={balance}
-									formatValue={(balance: number) => balance.toFixed(2)}
-									duration={1000}
-								/>
-							</div>
-							<div className="sub"><img src="./img/logo_coin_small.png" alt="coin" /> INSIG balance</div>
 
-							<div className="timer">{ rebase_timer }</div>
-							<div className="sub">Next rebase</div>
-
-							<div className="roi">1%</div>
-							<div className="sub">Daily ROI</div>
-						</div>
-
+						{show_balance()}
 					</div>
 				</div>
 				<div className="col-md-3"></div>

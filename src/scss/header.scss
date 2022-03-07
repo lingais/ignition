@@ -1,6 +1,5 @@
 header {
 	color: $theme-white;
-	background: $theme-blue;
 
 	h1 {
 		font-size: 1.125rem;
@@ -15,7 +14,7 @@ header {
 	}
 
 	nav {
-		position: absolute;
+		float: left;
 		margin: 0 auto;
 		padding: 10px 60px;
 		min-width: 100%;
