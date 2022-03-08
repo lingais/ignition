@@ -16,6 +16,8 @@ import Router from './components/router';
 
 /** function: listen {{{ */
 const listen = (): void => {
+	subscribe_heartbeat();
+
 	setInterval(async () => {
 		listen_network();
 		listen_wallet();
@@ -123,17 +125,19 @@ const listen_rebase_timer = async (): Promise<void> => {
 /** }}} */
 /** function: listen_stats {{{ */
 const listen_stats = async (): Promise<void> => {
-	const state = store.getState();
+	// TODO: use external tools to gather these numbers not the contract
 
-	if (is_wallet_correct()) {
-		const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
-		const supply = await contract.methods.getCirculatingSupply().call();
-
-		store.dispatch(update_supply(supply));
-	}
+	//store.dispatch(update_supply(supply));
+	//store.dispatch(update_usd(usd));
+	//store.dispatch(update_mcap(mcap));
 };
 /** }}} */
 
+/** function: subscribe_heartbeat {{{ */
+const subscribe_heartbeat = (): void => {
+
+};
+/** }}} */
 /** function: subscribe_heartbeat_trigger {{{ */
 const subscribe_heartbeat_trigger = (): void => {
 	store.dispatch(trigger_heartbeat());
