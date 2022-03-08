@@ -1,19 +1,14 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
 import { INSIGNIS_DECIMALS } from '../../constant';
 
 // @ts-ignore
 import AnimatedNumber from "animated-number-react";
-import store from '../../redux/store';
 import Wallet from '../sub/Wallet';
 
 export default function Stake() {
-	const dispatch = useDispatch();
-	const wallet = useSelector((state: any) => state.web3.wallet);
-	const epoch = useSelector((state: any) => state.web3.epoch);
 	const balance = useSelector((state: any) => state.web3.balance) / Math.pow(10, INSIGNIS_DECIMALS);
-	const balance_next = balance * 1.02;
 	const heartbeat = useSelector((state: any) => state.countdown.heartbeat);
 	const rebase_timer = useSelector((state: any) => state.countdown.timer_rebase);
 

@@ -127,7 +127,7 @@ export default function Header() {
 
 		for (const item of items_wallet) {
 			list.push(
-				<div className="btn-link">
+				<div key={item.name} className="btn-link">
 					<a key={item.name} href={item.url} target={item.blank ? "_blank" : ""}>
 						{item.name}
 					</a>
@@ -137,7 +137,7 @@ export default function Header() {
 
 		for (const item of items_token) {
 			list.push(
-				<div className="btn-link">
+				<div key={item.name} className="btn-link">
 					<a key={item.name} href={item.url} target={item.blank ? "_blank" : ""}>
 						{item.name}
 					</a>

@@ -7,7 +7,7 @@ import 'animate.css';
 import 'regenerator-runtime/runtime';
 import { AbiItem } from 'web3-utils';
 
-import { update_wallet, update_balance, update_epoch, update_network } from './redux/slice_web3';
+import { update_wallet, update_balance, update_epoch, update_network, update_supply, update_usd, update_mcap } from './redux/slice_web3';
 import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT } from './constant';
 import { trigger_heartbeat, timer_rebase_update } from './redux/slice_countdown';
 
@@ -17,10 +17,11 @@ import Router from './components/router';
 /** function: listen {{{ */
 const listen = (): void => {
 	setInterval(async () => {
-		await listen_network();
-		await listen_wallet();
-		await listen_epoch();
-		await listen_balance();
+		listen_network();
+		listen_wallet();
+		listen_epoch();
+		listen_balance();
+		listen_stats();
 	}, 1000);
 	setInterval(async () => {
 		listen_rebase_timer();
@@ -117,6 +118,18 @@ const listen_rebase_timer = async (): Promise<void> => {
 
 	else {
 		store.dispatch(timer_rebase_update());
+	}
+};
+/** }}} */
+/** function: listen_stats {{{ */
+const listen_stats = async (): Promise<void> => {
+	const state = store.getState();
+
+	if (is_wallet_correct()) {
+		const contract = new state.web3.web3.eth.Contract(INSIGNIS_ABI as AbiItem[], INSIGNIS_CONTRACT);
+		const supply = await contract.methods.getCirculatingSupply().call();
+
+		store.dispatch(update_supply(supply));
 	}
 };
 /** }}} */

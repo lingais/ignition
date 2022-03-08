@@ -1,8 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { format, addDays, startOfDay, formatDistance, fromUnixTime, differenceInSeconds } from 'date-fns';
 import Web3 from 'web3';
 import { HARMONY_MAINNET } from '../constant';
-import { INSIGNIS_DECIMALS } from '../constant';
 
 export const slice_web3 = createSlice({
   name: 'slice_web3',
@@ -12,6 +10,9 @@ export const slice_web3 = createSlice({
     wallet: null,
     balance: 0,
     epoch: 0,
+    supply: 0,
+    usd: 0.000001,
+    mcap: 0,
     rebase_timer: '',
   },
   reducers: {
@@ -51,6 +52,21 @@ export const slice_web3 = createSlice({
       state.epoch = action.payload;
     },
     /** }}} */
+    /** reducer: update_supply {{{ */
+    update_supply: (state, action) => {
+      state.supply = action.payload;
+    },
+    /** }}} */
+    /** reducer: update_usd {{{ */
+    update_usd: (state, action) => {
+      state.usd = action.payload;
+    },
+    /** }}} */
+    /** reducer: update_mcap {{{ */
+    update_mcap: (state, action) => {
+      state.mcap = action.payload;
+    },
+    /** }}} */
   },
 });
 
@@ -59,7 +75,10 @@ export const { update_epoch,
   update_wallet,
   update_network,
   update_balance,
-  update_rebase_timer
+  update_rebase_timer,
+  update_supply,
+  update_usd,
+  update_mcap
 } = slice_web3.actions;
 export type RootState = ReturnType<typeof slice_web3.reducer>;
 export default slice_web3.reducer;

@@ -1,8 +1,9 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import * as Scroll from 'react-scroll';
-import { INSIGNIS_CONTRACT, LINK_DISCORD, LINK_TWITTER } from '../../constant';
+import { INSIGNIS_CONTRACT, INSIGNIS_DECIMALS, LINK_DISCORD, LINK_TWITTER } from '../../constant';
 
 /** component: Front {{{ */
 function Front() {
@@ -200,6 +201,9 @@ function Backed() {
 /** component: Stats {{{ */
 function Stats() {
 	const duration = 0.75;
+	const supply = useSelector((state: any) => state.web3.supply) / Math.pow(10, INSIGNIS_DECIMALS);
+	const usd = useSelector((state: any) => state.web3.usd);
+	const mcap = useSelector((state: any) => state.web3.mcap);
 
 	return (
 		<div className="stats">
@@ -236,18 +240,18 @@ function Stats() {
 							<div className="block-stats col-md-12 col-xxl-4">
 								<div className="numbers">
 									<div className="intit">
-										<span className="d-none d-xl-block big">4200000 $INSIG</span>
-										<span className="d-block d-xl-none small">4200000 $INSIG</span>
+										<span className="d-none d-xl-block big">{supply} $INSIG</span>
+										<span className="d-block d-xl-none small">{supply} $INSIG</span>
 									</div>
 									<div className="intit-sub">Total supply</div>
 									<div className="intit">
-										<span className="d-none d-xl-block big">$0.00001</span>
-										<span className="d-block d-xl-none small">$0.00001</span>
+										<span className="d-none d-xl-block big">${usd}</span>
+										<span className="d-block d-xl-none small">${usd}</span>
 									</div>
 									<div className="intit-sub">Current USD value for one INSIG</div>
 									<div className="intit">
-										<span className="d-none d-xl-block big">$0.00001</span>
-										<span className="d-block d-xl-none small">$0.00001</span>
+										<span className="d-none d-xl-block big">${mcap}</span>
+										<span className="d-block d-xl-none small">${mcap}</span>
 									</div>
 									<div className="intit-sub">Market capitalisation</div>
 								</div>
