@@ -21,8 +21,6 @@ const listen = (): void => {
 		await listen_wallet();
 		await listen_epoch();
 		await listen_balance();
-
-		console.log("should be once in a second");
 	}, 1000);
 	setInterval(async () => {
 		listen_rebase_timer();

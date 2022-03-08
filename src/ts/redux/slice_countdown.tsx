@@ -33,7 +33,7 @@ export const slice_menu = createSlice({
       const seconds_format = seconds < 10 ? "0" + seconds : seconds;
 
       if (minutes > 0 || seconds > 0) state.timer_rebase = `${minutes}:${seconds_format}`;
-      else state.timer_rebase = `imminent`;
+      else state.timer_rebase = `waiting`;
     },
     /** }}} */
   },

@@ -23,15 +23,31 @@ header {
 		flex-flow: row nowrap;
 		align-items: center;
 
+		/// class: menu {{{
 		.menu {
 			position: relative;
 			top: 20px;
 			margin: 0;
 			padding: 0;
-			display: flex;
+			display: flex !important;
 			flex: 1 1 auto;
 			flex-flow: row nowrap;
 			justify-content: flex-end;
+
+			/// class: button-xs {{{
+			.button-xs {
+				position: relative;
+				bottom: 25px;
+				left: 60px;
+				font-size: 42px;
+
+				/// event: hover {{{
+				&:hover {
+					cursor: pointer;
+				}
+				/// }}}
+			}
+			/// }}}
 
 			// class: items {{{
 			.items {
@@ -52,7 +68,7 @@ header {
 					&:hover {
 						cursor: pointer;
 						text-decoration: none;
-						color: #fdff86;
+						color: $link-menu-yellow;
 					}
 				}
 			}
@@ -89,7 +105,44 @@ header {
 			}
 			// }}}
 		}
+		// }}}
 	}
+
+	/// class: menu-mobile {{{
+	.menu-mobile {
+		width: 100%;
+		overflow: hidden;
+		border-bottom: 1px solid #242424;
+		background: rgb(26, 26, 26);
+
+		/// class: btn-link {{{
+		.btn-link {
+			text-decoration: none;
+			width: 100%;
+			margin: 5px 0;
+			transition: 0.25s background-color;
+
+			&:hover {
+				background-color: $link-menu-highlight-mobile;
+			}
+
+			a {
+				display: block;
+				font-size: 18px;
+				width: 100vw;
+				padding: 5px 10px;
+				text-decoration: none;
+				color: white;
+				transition: 0.5s color;
+
+				&:hover {
+					color: $link-menu-yellow;
+				}
+			}
+		}
+		/// }}}
+	}
+	/// }}}
 
 	.banner {
 		img {

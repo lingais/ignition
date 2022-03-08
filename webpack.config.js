@@ -45,8 +45,8 @@ module.exports = {
 				loader: 'babel-loader',
 			},
 			{
-				test: /\.ttf?$/,
-				loader: 'ttf-loader',
+				test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+				loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]'
 			},
 			{
 				enforce: 'pre',
@@ -57,7 +57,7 @@ module.exports = {
 				test: /\.scss$/,
 				loader: 'style-loader!css-loader!sass-loader',
 			},
-	{
+			{
 				test: /\.css$/,
 				loader: 'css-loader',
 			},
@@ -68,11 +68,11 @@ module.exports = {
 					limit: 10000,
 				},
 			},
-			 {
-          test: /\.mjs$/,
-          include: /node_modules/,
-          type: "javascript/auto"
-        }
+			{
+				test: /\.mjs$/,
+				include: /node_modules/,
+				type: "javascript/auto"
+			}
 		],
 	},
 	resolve: {
