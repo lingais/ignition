@@ -16,25 +16,14 @@ import Router from './components/router';
 
 /** function: listen {{{ */
 const listen = (): void => {
-	subscribe_heartbeat();
-
 	setInterval(async () => {
 		listen_network();
 		listen_wallet();
 		listen_epoch();
 		listen_balance();
 		listen_stats();
-	}, 1000);
-	setInterval(async () => {
 		listen_rebase_timer();
-	}, 250);
-
-	subscribe_heartbeat_trigger();
-
-	// test purposes
-	setTimeout(async () => {
-		//subscribe_heartbeat_trigger();
-	}, 40000);
+	}, 500);
 };
 /** }}} */
 /** function: listen_network {{{ */
@@ -100,7 +89,11 @@ const listen_epoch = async (): Promise<void> => {
 				epoch = await contract.methods.getEpoch().call();
 			}
 
-			if (state.web3.epoch != epoch) store.dispatch(update_epoch(epoch));
+			// epoch has been updated - trigger heartbeat
+			if (state.web3.epoch != epoch) {
+				store.dispatch(update_epoch(epoch));
+				listen_epoch_trigger();
+			}
 		} catch (error) {
 			console.error("an error occured while probing for Insignis's rebase epoch - are you using the correct network?");
 			console.error(error);
@@ -110,6 +103,14 @@ const listen_epoch = async (): Promise<void> => {
 	else {
 		store.dispatch(update_epoch(0));
 	}
+};
+/** }}} */
+/** function: listen_epoch_trigger {{{ */
+const listen_epoch_trigger = (): void => {
+	store.dispatch(trigger_heartbeat());
+
+	// required to turn off the heartbeat clock
+	setTimeout(() => store.dispatch(trigger_heartbeat()), 2000);
 };
 /** }}} */
 /** function: listen_rebase_timer {{{ */
@@ -133,21 +134,7 @@ const listen_stats = async (): Promise<void> => {
 };
 /** }}} */
 
-/** function: subscribe_heartbeat {{{ */
-const subscribe_heartbeat = (): void => {
 
-};
-/** }}} */
-/** function: subscribe_heartbeat_trigger {{{ */
-const subscribe_heartbeat_trigger = (): void => {
-	store.dispatch(trigger_heartbeat());
-
-	// required to turn off the heartbeat clock
-	setTimeout(() => {
-		store.dispatch(trigger_heartbeat());
-	}, 2000);
-};
-/** }}} */
 
 /** function: is_network_correct {{{ */
 const is_network_correct = (): boolean => {
