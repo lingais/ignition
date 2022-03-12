@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import store from '../redux/store';
+import Web3Modal from "web3modal";
+import WalletConnectProvider from "@walletconnect/web3-provider";
+import { HARMONY_TESTNET, HARMONY_MAINNET } from '../constant';
+import { update_web3 } from '../redux/slice_web3';
 import { update_selected, update_list, update_clickable, update_mobile } from '../redux/slice_menu';
 
 export default function Header() {
@@ -85,11 +89,6 @@ export default function Header() {
 						name: "Stake",
 						url: "./#/stake",
 						blank: false
-					},
-					{
-						name: "Calculator",
-						url: "./#/calculator",
-						blank: false
 					}
 				);
 				break;
@@ -104,8 +103,8 @@ export default function Header() {
 						blank: true
 					},
 					{
-						name: "Documentation",
-						url: "./#/doc",
+						name: "Whitepaper",
+						url: "https://doc.insignis.finance",
 						blank: true
 					}
 				);
@@ -145,6 +144,22 @@ export default function Header() {
 			);
 		}
 
+		if (!is_connected()) {
+			list.push(
+				<div key="connect" className="btn-link">
+					<a key="connect" className="clickable" onClick={() => menu_wallet_click()}>Connect</a>
+				</div>
+			);
+		}
+
+		else {
+			list.push(
+				<div key="connect" className="btn-link">
+					<a key="connect">Connected</a>
+				</div>
+			);
+		}
+
 		return (
 			<>
 				{list}
@@ -155,6 +170,52 @@ export default function Header() {
 	/** function: menu_mobile_toggle {{{ */
 	const menu_mobile_toggle = (): void => {
 		store.dispatch(update_mobile());
+	};
+	/** }}} */
+	/** function: menu_wallet {{{ */
+	const menu_wallet = (): JSX.Element => {
+		if (!is_connected()) {
+			return (
+				<li className="nav-item" onClick={() => menu_wallet_click()}>Connect</li>
+			);
+		}
+
+		return (
+			<li className="nav-item">Connected</li>
+		);
+	};
+	/** }}} */
+	/** function: menu_wallet_click {{{ */
+	const menu_wallet_click = async (): Promise<void> => {
+		const providerOptions = {
+			/**walletconnect: {
+				package: WalletConnectProvider,
+				options: {
+					infuraId: ""
+				}
+			}*/
+		};
+		const web3Modal = new Web3Modal({
+			cacheProvider: false,
+			providerOptions,
+			theme: "dark"
+		});
+
+		web3Modal.clearCachedProvider();
+
+		const provider = await web3Modal.connect();
+
+		store.dispatch(() => update_web3(provider)); // updates web3 state
+	};
+	/** }}} */
+
+	/** function: is_connected {{{ */
+	const is_connected = (): boolean => {
+		const wallet = useSelector((state: any) => state.web3.wallet);
+		const network = useSelector((state: any) => state.web3.network);
+		const is_network = network === HARMONY_TESTNET;
+
+		return is_network && wallet;
 	};
 	/** }}} */
 
@@ -190,6 +251,7 @@ export default function Header() {
 				</div>
 				<div className="menu">
 					<div className="d-none d-xl-block items" onMouseLeave={() => menu_leave()}>
+						{menu_wallet()}
 						<li className="nav-item" onMouseEnter={() => menu_enter("wallet")}>Wallet</li>
 						<li className="nav-item" onMouseEnter={() => menu_enter("token")}>Token</li>
 

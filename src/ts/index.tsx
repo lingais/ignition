@@ -7,9 +7,9 @@ import 'animate.css';
 import 'regenerator-runtime/runtime';
 import { AbiItem } from 'web3-utils';
 
-import { update_wallet, update_balance, update_epoch, update_network, update_supply, update_usd, update_mcap } from './redux/slice_web3';
+import { update_wallet, update_balance, update_epoch, update_network } from './redux/slice_web3';
 import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT } from './constant';
-import { trigger_heartbeat, timer_rebase_update } from './redux/slice_countdown';
+import { trigger_heartbeat, timer_rebase_update, timer_launch_update } from './redux/slice_countdown';
 
 import store from './redux/store';
 import Router from './components/router';
@@ -23,6 +23,7 @@ const listen = (): void => {
 		listen_balance();
 		listen_stats();
 		listen_rebase_timer();
+		listen_launch_timer();
 	}, 500);
 };
 /** }}} */
@@ -124,6 +125,11 @@ const listen_rebase_timer = async (): Promise<void> => {
 	}
 };
 /** }}} */
+/** function: listen_launch_timer {{{ */
+const listen_launch_timer = async (): Promise<void> => {
+	store.dispatch(timer_launch_update());
+};
+/** }}} */
 /** function: listen_stats {{{ */
 const listen_stats = async (): Promise<void> => {
 	// TODO: use external tools to gather these numbers not the contract
@@ -133,8 +139,6 @@ const listen_stats = async (): Promise<void> => {
 	//store.dispatch(update_mcap(mcap));
 };
 /** }}} */
-
-
 
 /** function: is_network_correct {{{ */
 const is_network_correct = (): boolean => {

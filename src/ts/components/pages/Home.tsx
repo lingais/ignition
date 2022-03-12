@@ -2,22 +2,69 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { fromUnixTime } from 'date-fns';
 import * as Scroll from 'react-scroll';
-import { INSIGNIS_CONTRACT, INSIGNIS_DECIMALS, LINK_DISCORD, LINK_TWITTER } from '../../constant';
+import { INSIGNIS_CONTRACT, INSIGNIS_DECIMALS, LINK_DISCORD, LINK_TWITTER, INSIGNIS_LAUNCH_EPOCH } from '../../constant';
 
 /** component: Front {{{ */
 function Front() {
+	/** function: buy_or_wl {{{ */
+	const buy_or_wl = (): JSX.Element => {
+		const now = new Date().getTime();
+		const whitelist_end = fromUnixTime(INSIGNIS_LAUNCH_EPOCH).getTime();
+		const whitelist_remaining = whitelist_end - now;
+		const countdown = useSelector((state: any) => state.countdown.timer_launch);
+
+		if (whitelist_remaining > 0) {
+			return (
+				<>
+					<div className="launch_countdown">
+						{countdown}
+					</div>
+					<div className="sub-btn-text">
+						join early - join the whitelist
+					</div>
+					<div className="sub-btn-links">
+						<a href={LINK_DISCORD} target="_blank"><img src="/img/social/discord.svg"></img></a>
+						<a href={LINK_TWITTER} target="_blank"><img src="/img/social/twitter.svg"></img></a>
+					</div>
+				</>
+			);
+
+		}
+
+		else {
+			return (
+				<>
+					<Link to="howtobuy"
+						smooth={true}
+						duration={50}
+						delay={0}
+						isDynamic={true}
+					><button className="btn-buy">buy $insig</button></Link>
+					<div className="sub-btn-text">
+						& join our social networks
+					</div>
+					<div className="sub-btn-links">
+						<a href={LINK_DISCORD} target="_blank"><img src="/img/social/discord.svg"></img></a>
+						<a href={LINK_TWITTER} target="_blank"><img src="/img/social/twitter.svg"></img></a>
+					</div>
+				</>
+			);
+
+		}
+	};
+	/** }}} */
+
 	const title_duration = 0.75;
 	const txt_duration = 1.5;
 	const txt2_delay = 1.0;
 	const txt3_delay = txt2_delay * 1.5;
 	const buy_delay = txt3_delay * 1.5;
-
 	const content_title = "The fastest Titano fork ever.";
 	const content1 = "First Titano fork on Harmony.";
 	const content2 = "Automatic staking & compounding.";
 	const content3 = "1% daily passive income.";
-
 	const Link = Scroll.Link;
 
 	return (
@@ -65,19 +112,7 @@ function Front() {
 						animate={{ opacity: 1 }}
 						transition={{ duration: txt_duration, delay: buy_delay }}
 					>
-						<Link to="howtobuy"
-							smooth={true}
-							duration={50}
-							delay={0}
-							isDynamic={true}
-						><button className="btn-buy">buy $insig</button></Link>
-						<div className="sub-btn-text">
-							& join our social networks
-						</div>
-						<div className="sub-btn-links">
-							<a href={LINK_DISCORD} target="_blank"><img src="/img/social/discord.svg"></img></a>
-							<a href={LINK_TWITTER} target="_blank"><img src="/img/social/twitter.svg"></img></a>
-						</div>
+						{buy_or_wl()}
 					</motion.div>
 				</div>
 			</div>
@@ -388,14 +423,14 @@ function About() {
 							<div className="col-4">
 								<div className="title">Our community</div>
 								<ol>
-									<a href="#" target="_blank"><li className="about-link">Discord</li></a>
-									<a href="#" target="_blank"><li className="about-link">Twitter</li></a>
+									<a href={LINK_DISCORD} target="_blank"><li className="about-link">Discord</li></a>
+									<a href={LINK_TWITTER} target="_blank"><li className="about-link">Twitter</li></a>
 								</ol>
 							</div>
 							<div className="col-4">
 								<div className="title">Links</div>
 								<ol>
-									<a href="#" target="_blank"><li className="about-link">Whitepaper</li></a>
+									<a href="https://doc.insignis.finance" target="_blank"><li className="about-link">Whitepaper</li></a>
 									<a href="https://www.harmony.one" target="_blank"><li className="about-link">Contract</li></a>
 									<a href="https://www.harmony.one" target="_blank"><li className="about-link">Harmony</li></a>
 									<a href="https://viperswap.one" target="_blank"><li className="about-link">ViperSwap</li></a>

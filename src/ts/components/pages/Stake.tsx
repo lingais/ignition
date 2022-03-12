@@ -5,8 +5,6 @@ import { INSIGNIS_DECIMALS } from '../../constant';
 
 // @ts-ignore
 import AnimatedNumber from "animated-number-react";
-import Wallet from '../sub/Wallet';
-import Menu_Foot from '../sub/Menu_Foot';
 
 export default function Stake() {
 	const balance = useSelector((state: any) => state.web3.balance) / Math.pow(10, INSIGNIS_DECIMALS);
@@ -127,9 +125,6 @@ export default function Stake() {
 			<br />
 			<b>Next rebase in:</b> {rebase_timer}  (not on schedule on the testnet)
 	*/}
-
-			<Wallet />
-			<Menu_Foot />
 		</motion.div>
 	);
 }
