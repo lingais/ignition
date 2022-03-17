@@ -80,7 +80,9 @@ function Front() {
 				</motion.div>
 			</div>
 			<div className="row">
-				<div className="txt1 col-12 col-xl-8">
+
+				<div className="d-none d-xl-block col-xxl-1"></div>
+				<div className="txt1 col-12 col-xl-7">
 					<motion.div className="first"
 						initial={{ x: "-80%", opacity: 0 }}
 						animate={{ x: "5%", opacity: 1 }}
@@ -115,6 +117,8 @@ function Front() {
 						{buy_or_wl()}
 					</motion.div>
 				</div>
+
+				<div className="d-none d-xl-block col-xxl-1"></div>
 			</div>
 		</div>
 	);
@@ -130,7 +134,8 @@ function Explain() {
 		<div className="explain">
 			<div className="container-fluid">
 				<div className="row">
-					<div className="col-12 col-xxl-7">
+					<div className="d-none d-xl-block col-xxl-1"></div>
+					<div className="col-12 col-xxl-5">
 						<div className="detail">
 							<motion.div className="title"
 								initial={{ x: "-80%", opacity: 0 }}
@@ -158,7 +163,7 @@ function Explain() {
 					</div>
 					<div className="col-12 col-xxl-5">
 						<div className="image">
-							<motion.img src="./img/infographic-explain.png" alt=""
+							<motion.img className="img-fluid" src="./img/infographic-explain.png" alt=""
 								initial={{ x: "100%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
@@ -166,6 +171,8 @@ function Explain() {
 							></motion.img>
 						</div>
 					</div>
+
+					<div className="d-none d-xl-block col-xxl-1"></div>
 				</div>
 			</div>
 		</div>
@@ -213,9 +220,10 @@ function Backed() {
 						{content()}
 					</div>
 
-					<div className="col-12 col-xxl-4">
+					<div className="d-none d-xl-block col-xxl-1"></div>
+					<div className="col-12 col-xxl-5">
 						<div className="image">
-							<motion.img src="./img/infographic-backed.png" alt=""
+							<motion.img className="img-fluid" src="./img/infographic-backed.png" alt=""
 								initial={{ x: "-80%", opacity: 0 }}
 								whileInView={{ x: "1%", opacity: 1 }}
 								viewport={{ once: true }}
@@ -224,9 +232,10 @@ function Backed() {
 						</div>
 					</div>
 
-					<div className="col-8 d-none d-xxl-block">
+					<div className="col-8 d-none d-xxl-block col-xxl-5">
 						{content()}
 					</div>
+					<div className="d-none d-xl-block col-xxl-1"></div>
 				</div>
 			</div>
 		</div>
@@ -283,7 +292,7 @@ function Stats() {
 										<span className="d-none d-xl-block big">${usd}</span>
 										<span className="d-block d-xl-none small">${usd}</span>
 									</div>
-									<div className="intit-sub">Current USD value for one INSIG</div>
+									<div className="intit-sub">USD value for 1 INSIG</div>
 									<div className="intit">
 										<span className="d-none d-xl-block big">${mcap}</span>
 										<span className="d-block d-xl-none small">${mcap}</span>
@@ -369,10 +378,11 @@ function Howtobuy() {
 								</motion.div>
 							</div>
 						</div>
+						<br />
 						<div className="col-12 col-md-12">
 							<div className="row">
 								<div className="col-12 col-xxl-6 howtobuy-img">
-									<a href="https://viperswap.one/#/swap" target="_blank"><motion.img src="./img/infographic-howtobuy1.png" alt=""
+									<a href="https://viperswap.one/#/swap" target="_blank"><motion.img className="img-fluid" src="./img/infographic-howtobuy1.png" alt=""
 										initial={{ x: "-80%", opacity: 0 }}
 										whileInView={{ x: "1%", opacity: 1 }}
 										viewport={{ once: true }}
@@ -381,7 +391,7 @@ function Howtobuy() {
 								</div>
 
 								<div className="col-12 col-xxl-6 howtobuy-img">
-									<CopyToClipboard text={contract}><motion.img className="clickable" src="./img/infographic-howtobuy2.png" alt=""
+									<CopyToClipboard text={contract}><motion.img className="clickable img-fluid" src="./img/infographic-howtobuy2.png" alt=""
 										initial={{ x: "100%", opacity: 0 }}
 										whileInView={{ x: "1%", opacity: 1 }}
 										viewport={{ once: true }}
@@ -421,7 +431,7 @@ function About() {
 								</ol>
 							</div>
 							<div className="col-4">
-								<div className="title">Our community</div>
+								<div className="title">Socials</div>
 								<ol>
 									<a href={LINK_DISCORD} target="_blank"><li className="about-link">Discord</li></a>
 									<a href={LINK_TWITTER} target="_blank"><li className="about-link">Twitter</li></a>

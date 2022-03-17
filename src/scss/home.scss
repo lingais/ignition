@@ -78,7 +78,7 @@
     }
 
     .small {
-      font-size: 30px;
+      font-size: 22px;
     }
   }
   /// }}}
@@ -145,13 +145,14 @@
       width: 100%;
       font-weight: bold;
       text-align: left;
+      margin-bottom: 20px;
 
       .big {
         font-size: 42px;
       }
 
       .small {
-        font-size: 28px;
+        font-size: 22px;
       }
     }
     /// }}}
@@ -217,6 +218,7 @@
   .about {
     min-height: 780px;
     background: #071625;
+    padding: 0 10px;
 
     .banner {
       text-align: center;
@@ -285,15 +287,18 @@
       }
       .small {
         font-size: 36px;
+        padding: 5px 20px;
       }
     }
 
     .content {
       .big {
         font-size: 24px;
+        padding: 10px 20px;
       }
       .small {
         font-size: 18px;
+        padding: 5px 20px;
       }
     }
   }
@@ -301,14 +306,14 @@
   /// class: image {{{
   .image {
     text-align: center;
-    padding: 10px 40px;
+    padding: 10px 5px;
   }
   /// }}}
 }
 /// }}}
 /// route: stake {{{
 .stake {
-  height: 100vh;
+  height: 100%;
   padding-top: 150px;
 }
 /// }}}
