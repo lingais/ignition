@@ -22,7 +22,7 @@ function Front() {
 						{countdown}
 					</div>
 					<div className="sub-btn-text">
-						join early - join the whitelist
+						buy early - join the whitelist
 					</div>
 					<div className="sub-btn-links">
 						<a href={LINK_DISCORD} target="_blank"><img src="/img/social/discord.svg"></img></a>

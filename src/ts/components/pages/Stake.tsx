@@ -1,7 +1,8 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { motion } from 'framer-motion';
-import { INSIGNIS_DECIMALS } from '../../constant';
+import { fromUnixTime } from 'date-fns';
+import { INSIGNIS_DECIMALS, INSIGNIS_LAUNCH_EPOCH } from '../../constant';
 
 // @ts-ignore
 import AnimatedNumber from "animated-number-react";
@@ -10,6 +11,9 @@ export default function Stake() {
 	const balance = useSelector((state: any) => state.web3.balance) / Math.pow(10, INSIGNIS_DECIMALS);
 	const heartbeat = useSelector((state: any) => state.countdown.heartbeat);
 	const rebase_timer = useSelector((state: any) => state.countdown.timer_rebase);
+	const now = new Date().getTime();
+	const whitelist_end = fromUnixTime(INSIGNIS_LAUNCH_EPOCH).getTime();
+	const whitelist_remaining = whitelist_end - now;
 
 	/** function: show_balance {{{ */
 	const show_balance = (): JSX.Element => {
@@ -24,7 +28,7 @@ export default function Stake() {
 				</div>
 				<div className="sub"><img src="./img/logo_coin_small.png" alt="coin" /> INSIG balance</div>
 
-				<div className="timer">{rebase_timer}</div>
+				<div className="timer">{whitelist_remaining > 0 ? "disabled" : rebase_timer}</div>
 				<div className="sub">Next rebase</div>
 
 				<div className="roi">1%</div>
@@ -110,21 +114,6 @@ export default function Stake() {
 				</div>
 				<div className="col-md-3"></div>
 			</div>
-
-			{/**
-			<h2>Stake</h2>
-			<b>Wallet:</b> {wallet}
-			<br />
-			<b>Balance:</b> {balance}
-			<br />
-			<b>Balance at next rebase:</b> {balance_next}
-			<br />
-			<b>Daily ROI:</b> 2%
-			<br />
-			<b>Epoch:</b> {epoch}
-			<br />
-			<b>Next rebase in:</b> {rebase_timer}  (not on schedule on the testnet)
-	*/}
 		</motion.div>
 	);
 }
