@@ -1,9 +1,9 @@
 export const HARMONY_TESTNET: number = 1666700000;
 export const HARMONY_MAINNET: number = 1666600000;
-export const LINK_DISCORD = "https://discord.gg/yPMSuPg6pB";
+export const LINK_DISCORD = "https://discord.gg/insignisfinance";
 export const LINK_TWITTER = "https://twitter.com/insignisfinance";
-export const INSIGNIS_CONTRACT: string = "0xfE0E1343cd44b96d62Ee7d4D581BFd852599118c";
-export const INSIGNIS_LAUNCH_EPOCH: number = 1647043380;
+export const INSIGNIS_CONTRACT: string = "0x06732Ea34348B8c2cbF170147b4e108D13e0ca5E";
+export const INSIGNIS_LAUNCH_EPOCH: number = 1647354380;
 export const INSIGNIS_DECIMALS: number = 6;
 export const INSIGNIS_ABI = [
 	{
