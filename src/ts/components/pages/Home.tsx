@@ -304,7 +304,6 @@ function Stats() {
 								<div className="links">
 									<a href="#" target="_blank"><button className="btn-dexscreener">dexscreener</button></a>
 									<button className="btn-cmc" disabled>coinmarketcap</button>
-									<button className="btn-coingecko" disabled>coingecko</button>
 								</div>
 							</div>
 							<div className="d-none d-xl-block col-xxl-1"></div>
