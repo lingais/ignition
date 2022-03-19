@@ -8,7 +8,7 @@ import 'regenerator-runtime/runtime';
 import { AbiItem } from 'web3-utils';
 
 import { update_wallet, update_balance, update_epoch, update_network } from './redux/slice_web3';
-import { HARMONY_TESTNET, INSIGNIS_ABI, INSIGNIS_CONTRACT } from './constant';
+import { HARMONY_MAINNET, INSIGNIS_ABI, INSIGNIS_CONTRACT } from './constant';
 import { trigger_heartbeat, timer_rebase_update, timer_launch_update } from './redux/slice_countdown';
 
 import store from './redux/store';
@@ -145,7 +145,7 @@ const is_network_correct = (): boolean => {
 	const state = store.getState();
 
 	//return state.web3.network === HARMONY_MAINNET;
-	return state.web3.network === HARMONY_TESTNET;
+	return state.web3.network === HARMONY_MAINNET;
 };
 /** }}} */
 /** function: is_wallet_correct {{{ */

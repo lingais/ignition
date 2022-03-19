@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import store from '../redux/store';
 import Web3Modal from "web3modal";
 import WalletConnectProvider from "@walletconnect/web3-provider";
-import { HARMONY_TESTNET, HARMONY_MAINNET } from '../constant';
+import { HARMONY_MAINNET } from '../constant';
 import { update_web3 } from '../redux/slice_web3';
 import { update_selected, update_list, update_clickable, update_mobile } from '../redux/slice_menu';
 
@@ -213,7 +213,7 @@ export default function Header() {
 	const is_connected = (): boolean => {
 		const wallet = useSelector((state: any) => state.web3.wallet);
 		const network = useSelector((state: any) => state.web3.network);
-		const is_network = network === HARMONY_TESTNET;
+		const is_network = network === HARMONY_MAINNET;
 
 		return is_network && wallet;
 	};
