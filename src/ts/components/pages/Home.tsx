@@ -128,7 +128,7 @@ function Front() {
 function Explain() {
 	const duration = 0.75;
 	const content1 = "Insignis is the first Titano fork on the Harmony blockchain. It is a rebase cryptocurrency which automatically grows by holding it alone.";
-	const content2 = "Holders actually holds a share of Insignis's total supply. On each rebase, the total supply grows, thus increasing holders owned value.";
+	const content2 = "Holders actually hold a share of Insignis's total supply. On each rebase, the total supply grows, thus increasing holders owned value.";
 
 	return (
 		<div className="explain">
@@ -182,8 +182,8 @@ function Explain() {
 /** component: Backed {{{ */
 function Backed() {
 	const duration = 0.75;
-	const content1 = "Thanks to a system of transaction taxes, those taxes are directly sent to Risk Free Value Wallet that is used for buyback & burn.";
-	const content2 = "Those taxes are also used to fund marketing operations and active development on what is to come!";
+	const content1 = "Thanks to a system of transaction taxes, those taxes are directly sent to Risk Free Value Wallet that is used to buyback & burn.";
+	const content2 = "Those taxes are also used to fund marketing operations and active development of what is to come!";
 
 	const content = () => (
 		<div className="detail">
@@ -464,7 +464,7 @@ export default function Home() {
 			<Front />
 			<Explain />
 			<Backed />
-			<Stats />
+			{/*<Stats /> */}
 			<Howtobuy />
 			<About />
 		</motion.div>
