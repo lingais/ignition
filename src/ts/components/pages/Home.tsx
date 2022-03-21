@@ -427,6 +427,13 @@ function About() {
 								<ol>
 									<a href="mailto: contact@primitivealgorithm.com"><li className="about-link">Contact</li></a>
 									<a href="mailto: business@primitivealgorithm.com"><li className="about-link">Business</li></a>
+									<span className="about-link">Primitive Algorithm</span>
+									<br />
+									<br />
+									<span className="about-link">Registered under SIRET</span>
+									<br />
+									<br />
+									<span className="about-link">910 263 474 00017</span>
 								</ol>
 							</div>
 							<div className="col-4">

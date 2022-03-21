@@ -252,6 +252,16 @@
 
     ol {
       padding: 0;
+      text-decoration: none;
+
+      .about-link {
+        color: $link-menu-hid;
+        transition: 0.2s color;
+
+        &:hover {
+          color: rgb(255, 227, 136);
+        }
+      }
 
       a {
         text-decoration: none;

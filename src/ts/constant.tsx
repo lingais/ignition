@@ -1281,4 +1281,4 @@ export const INSIGNIS_ABI = [
 		"stateMutability": "view",
 		"type": "function"
 	}
-];
+]
