@@ -134,7 +134,7 @@ async function writeSettings(newSettings) {
 }
 
 async function configWebpack() {
-	const outDirectory = await ask('Output directory', settings.output.directory)
+	const outDirectory = "./"
 	settings.output.directory = outDirectory;
 
 	const title = await ask('HTML document title', settings.html.title)
