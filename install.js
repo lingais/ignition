@@ -140,7 +140,7 @@ async function configWebpack() {
 	const title = "Looper Finance"
 	settings.html.title = title;
 
-	const description = await ask('HTML meta description', settings.html.meta.description)
+	const description = "Enter the Loop!"
 	settings.html.meta.description = description;
 
 	const port = await ask('dev port', settings.devServer.port);
