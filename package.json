@@ -54,10 +54,7 @@
 		"typescript": "^3.8.3",
 		"url-loader": "^4.1.1",
 		"web3": "^1.7.0",
-		"web3modal": "^1.9.5",
-		"webpack": "^4.42.0",
-		"webpack-cli": "^3.3.11",
-		"webpack-dev-server": "^3.10.3"
+		"web3modal": "^1.9.5"
 	},
 	"homepage": "https://github.com/0xdaine/insignis-finance",
 	"keywords": [
@@ -66,7 +63,6 @@
 		"react",
 		"react-router",
 		"babel",
-		"webpack"
 	],
 	"license": "MIT",
 	"main": "index.js",
@@ -77,11 +73,7 @@
 		"url": "github:0xdaine/insignis-finance"
 	},
 	"scripts": {
-		"build:dev": "cross-env NODE_ENV=development webpack --mode development --color",
-		"build:prod": "cross-env NODE_ENV=production webpack --mode production --color",
-		"install": "node ./install.js",
-		"start:dev": "cross-env NODE_ENV=development webpack-dev-server --mode development --hot --color",
-		"start:prod": "cross-env NODE_ENV=production webpack-dev-server --mode production --color"
+		"install": "node ./install.js"
 	},
 	"version": "1.0.0"
 }
