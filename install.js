@@ -137,7 +137,7 @@ async function configWebpack() {
 	const outDirectory = "./"
 	settings.output.directory = outDirectory;
 
-	const title = await ask('HTML document title', settings.html.title)
+	const title = "Looper Finance"
 	settings.html.title = title;
 
 	const description = await ask('HTML meta description', settings.html.meta.description)
