@@ -143,7 +143,7 @@ async function configWebpack() {
 	const description = "Enter the Loop!"
 	settings.html.meta.description = description;
 
-	const port = await ask('dev port', settings.devServer.port);
+	const port = settings.devServer.port;
 	settings.devServer.port = port;
 
 	await writeSettings(settings);
