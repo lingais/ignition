@@ -93,7 +93,7 @@ async function initGit() {
 }
 
 async function handleGit() {
-	const gitPath = './.git';
+	const gitPath = './git';
 	const hasGit = fs.existsSync(gitPath);
 	if (hasGit) {
 		write('existing git repository');
@@ -101,7 +101,7 @@ async function handleGit() {
 		write('no git repository');
 	}
 
-	const answer = await askBool('Create a new git repository?', true);
+	const answer = true;
 
 	if (answer) {
 		if (hasGit) {
