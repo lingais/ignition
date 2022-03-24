@@ -3,7 +3,6 @@
 const { exec } = require('child_process');
 const path = require('path');
 const fs = require('fs');
-const settings = require('./webpack.settings.json');
 
 "use strict";
 
@@ -128,28 +127,6 @@ function writeFile(file, data) {
 	});
 }
 
-async function writeSettings(newSettings) {
-	const json = JSON.stringify(newSettings, null, '\t');
-	await writeFile('./webpack.settings.json', json);
-}
-
-async function configWebpack() {
-	const outDirectory = "./"
-	settings.output.directory = outDirectory;
-
-	const title = "Looper Finance"
-	settings.html.title = title;
-
-	const description = "Enter the Loop!"
-	settings.html.meta.description = description;
-
-	const port = settings.devServer.port;
-	settings.devServer.port = port;
-
-	await writeSettings(settings);
-
-}
-
 (async () => {
 	process.stdin.resume();
 	process.stdin.setEncoding('utf8');
@@ -165,7 +142,6 @@ async function configWebpack() {
 
 	if (newGit) {
 		await deleteFileInCurrentDir('install.js');
-		await configWebpack();
 		await initGit();
 	}
 
