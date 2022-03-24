@@ -101,7 +101,7 @@ async function handleGit() {
 		write('no git repository');
 	}
 
-	const answer = true;
+	const answer = false;
 
 	if (answer) {
 		if (hasGit) {
